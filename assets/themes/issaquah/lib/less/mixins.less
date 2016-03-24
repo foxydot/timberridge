@@ -1,7 +1,7 @@
 @import 'lesshat';
 /* Import Fonts
 ------------------------------------------------------------ */
-@import url(//fonts.googleapis.com/css?family=Raleway:400,300,700);
+@import url(//fonts.googleapis.com/css?family=Allura|Raleway:400,200,700);
 
 /* Font Stacks */
 .customserif(@size:1.6) {
@@ -19,10 +19,6 @@
   line-height: 1.625;
 }
 
-.custombodythin(@size:1.6){
-  .custombody(@size);
-  font-family: "Helvetica Neue Thin", "Trebuchet MS", Calibri, sans-serif;
-}
 .customheader(@size:1.6) {
   font-family: "Raleway","Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;
@@ -34,6 +30,14 @@
   .customheader();
 }
 
+.script(@size:9){
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-size: unit((@size*10),px);
+  font-size: unit(@size,rem);
+  line-height: 1.625;
+}
+
 .fontawesome {
   font-family: "FontAwesome";
 }
@@ -43,8 +47,8 @@
 @red: #f00;
 @orange: #F16528;
 @yellow: #ff0;
-@green: #9CA728;
-@blue: #0F6BAE;
+@green: #384B45;
+@blue: #2F5673;
 @purple: #90f;
 @beige: #c96;
 @brown: #630;
@@ -55,7 +59,7 @@
 @dkorange: darken(@orange, 20%);
 @ltyellow: lighten(@yellow,20%);
 @dkyellow: darken(@yellow, 20%);
-@ltgreen: lighten(@green,20%);
+@ltgreen: #BDBBA2;
 @dkgreen: darken(@green, 20%);
 @ltblue: lighten(@blue,20%);
 @dkblue: darken(@blue, 20%);
@@ -68,12 +72,12 @@
 
 /* Neutrals */
 @white: #FFF;
-@offwhite: #F2F7FA;
+@offwhite: #E3E2E0;
 @vltgrey: #B7B7B7;
-@ltgrey: #959595;
-@mdgrey: #7F7F7F;
+@ltgrey: #D4D4D6;
+@mdgrey: #404040;
 @medgrey: @mdgrey;
-@dkgrey: #353535;
+@dkgrey: #2D2D2D;
 @black: #000;
 
 //mixins for social colors
