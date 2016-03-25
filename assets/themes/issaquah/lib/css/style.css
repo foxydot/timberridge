@@ -7111,7 +7111,6 @@ Site Navigation
 ---------------------------------------------------------------------------------------------------- */
 .genesis-nav-menu {
   clear: both;
-  color: #404040;
   font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -7722,7 +7721,7 @@ Footer Widgets
   background-color: #404040;
   color: #FFF;
   clear: both;
-  padding: 0;
+  padding: 2rem 0;
 }
 .footer-widgets a {
   color: #FFF;
@@ -7731,102 +7730,41 @@ Footer Widgets
   color: #E3E2E0;
 }
 .footer-widgets .widget {
-  margin: 0 auto;
+  margin: 2rem auto;
   float: none;
   clear: both;
-}
-.footer-widgets .widget-title {
-  font-size: 2.8rem;
-  font-weight: 300;
-}
-.footer-widgets li {
-  list-style-type: none;
-  margin-bottom: 6px;
-  margin-bottom: 0.6rem;
-  word-wrap: break-word;
-}
-.footer-widgets .connected-text {
-  text-align: center;
-  max-width: 75%;
-  margin: 0 auto;
-}
-.footer-widgets .connected-form input,
-.footer-widgets .connected-form textarea {
-  background-color: #FFF;
-  border: 1px solid #B7B7B7;
-  padding: 1rem !important;
-}
-.footer-widgets .connected-form ::-webkit-input-placeholder {
-  color: #D4D4D6;
-}
-.footer-widgets .connected-form :-moz-placeholder {
-  /* Firefox 18- */
-  color: #D4D4D6;
-}
-.footer-widgets .connected-form ::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #D4D4D6;
-}
-.footer-widgets .connected-form :-ms-input-placeholder {
-  color: #D4D4D6;
-}
-.footer-widgets .connected-form input[type="submit"],
-.footer-widgets .connected-form input[type="button"],
-.footer-widgets .connected-form a.button {
-  background-color: #2F5673;
-  border-radius: 30px;
-  padding: 6px 24px;
-  font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
-  font-weight: 400;
-  font-size: 16px;
-  font-size: 1.6rem;
-  line-height: 1.625;
-  color: #FFFFFF;
-  font-size: 12px;
-  font-weight: normal;
-  text-transform: uppercase;
-  display: table;
-  margin: 12px auto;
-  text-decoration: none;
-  width: 80%;
-}
-.footer-widgets .align-right {
-  text-align: right;
-  text-transform: uppercase;
-  font-size: 14px;
-  font-size: 1.4rem;
-}
-.footer-widgets .align-right .connected-bizname {
-  font-weight: 700;
-}
-.footer-widgets h3,
-.footer-widgets h3.gform_title {
-  font-size: 2.0rem;
-  text-transform: uppercase;
-  font-weight: 300 !important;
-  margin: 10px 0 6px;
-}
-.footer-widgets .connected-address span.msdsocial_street {
   display: block;
+  text-align: center;
 }
 .footer-widgets .connected-social .social-media {
-  float: right;
+  margin: 1rem 0;
+  float: none;
+  margin: 0 auto;
+}
+.footer-widgets .connected-social .social-media a,
+.footer-widgets .connected-social .social-media a:hover {
+  float: none;
+  display: inline-block;
+}
+.footer-widgets .connected-social .social-media a:before,
+.footer-widgets .connected-social .social-media a:hover:before {
+  opacity: 1;
 }
 .footer-widgets .connected-social .social-media a.fa {
-  background: none;
-  border: 1px solid #bdd3e4;
+  background: #FFF;
+  color: #404040;
   border-radius: 100%;
+  font-size: 2rem;
+  height: 2em;
+  line-height: 2;
   margin: 10px;
-  height: 50px;
-  width: 50px;
-  font-size: 3rem;
-  line-height: 1.6;
+  width: 2em;
 }
 .footer-widgets .connected-social .social-media a.fa.last-child {
   margin-right: 0;
 }
 .footer-widgets .connected-social .social-media a.fa:hover {
-  border-color: #203b4f;
+  background-color: #E3E2E0;
 }
 .footer-widgets .connected-social .social-media a.fa-facebook:hover {
   background-color: #345AA1;
@@ -7875,6 +7813,32 @@ Footer Widgets
 }
 .footer-widgets .search-form input:focus {
   border: 0 solid #ddd;
+}
+.footer-widgets .widget.widget_nav_menu {
+  margin: 0 auto;
+  max-width: 1100px;
+  text-align: left;
+}
+.footer-widgets .widget.widget_nav_menu ul.menu {
+  -moz-column-count: 4;
+  -moz-column-gap: 30px;
+  -webkit-column-count: 4;
+  -webkit-column-gap: 30px;
+  column-count: 4;
+  column-gap: 30px;
+}
+.footer-widgets .widget.widget_nav_menu ul.menu > li > a {
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.footer-widgets .widget.widget_nav_menu ul.menu > li .sub-menu {
+  margin-bottom: 1em;
+}
+.footer-widgets .widget.widget_nav_menu ul.menu > li .sub-menu .sub-menu {
+  display: none;
+}
+.footer-widgets .widget.widget_nav_menu ul.menu > li.first-child {
+  display: none;
 }
 /*
 Site Footer
