@@ -45,9 +45,6 @@
   clear: both;
   visibility: hidden;
 }
-.site-inner div {
-  text-align: center;
-}
 .site-inner .button,
 .site-inner .button:hover {
   width: auto;

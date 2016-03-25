@@ -6584,6 +6584,7 @@ td {
 }
 .container {
   max-width: none;
+  width: auto;
 }
 /*
 Structure and Layout
@@ -6599,8 +6600,12 @@ article {
 }
 .site-inner {
   clear: both;
-  padding-top: 20px;
-  padding-top: 2rem;
+  padding: 0;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9Imxlc3NoYXQtZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNFM0UyRTAiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMzMlIiBzdG9wLWNvbG9yPSIjRTNFMkUwIiBzdG9wLW9wYWNpdHk9IjEiLz48c3RvcCBvZmZzZXQ9IjY2JSIgc3RvcC1jb2xvcj0iI0ZGRiIgc3RvcC1vcGFjaXR5PSIxIi8+PHN0b3Agb2Zmc2V0PSI5OSUiIHN0b3AtY29sb3I9IiNGRkYiIHN0b3Atb3BhY2l0eT0iMSIvPjwvbGluZWFyR3JhZGllbnQ+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNsZXNzaGF0LWdlbmVyYXRlZCkiIC8+PC9zdmc+);
+  background-image: -webkit-linear-gradient(left, #E3E2E0 0%, #E3E2E0 33.3%, #FFF 33.4%, #FFF 100%);
+  background-image: -moz-linear-gradient(left, #E3E2E0 0%, #E3E2E0 33.3%, #FFF 33.4%, #FFF 100%);
+  background-image: -o-linear-gradient(left, #E3E2E0 0%, #E3E2E0 33.3%, #FFF 33.4%, #FFF 100%);
+  background-image: linear-gradient(to right, #E3E2E0 0%, #E3E2E0 33.3%, #FFF 33.4%, #FFF 100%);
 }
 /* Column Widths and Positions
 --------------------------------------------- */
@@ -6637,9 +6642,6 @@ article {
 /* Primary Sidebar */
 .sidebar-primary {
   float: left;
-}
-.sidebar-content-sidebar .sidebar-primary {
-  padding-left: 0;
 }
 .sidebar-content .sidebar-primary,
 .sidebar-sidebar-content .sidebar-primary {
@@ -7250,6 +7252,10 @@ Site Navigation
   padding: 1rem 0;
   width: 100%;
 }
+.nav-primary li.menu-item .sub-menu li.menu-item .sub-menu {
+  left: 0;
+  top: 0;
+}
 .nav-primary li.menu-item .sub-menu li.last-child > a {
   border: 0;
 }
@@ -7388,6 +7394,9 @@ Site Navigation
 /*
 Content Area
 ---------------------------------------------------------------------------------------------------- */
+main.content {
+  padding: 2rem 0 2rem 2rem;
+}
 /* Entries
 --------------------------------------------- */
 article.entry {
@@ -7640,7 +7649,10 @@ li.comment {
 Sidebars
 ---------------------------------------------------------------------------------------------------- */
 .sidebar {
+  background: #E3E2E0;
   color: #D4D4D6;
+  padding: 2rem 2rem 2rem 0;
+  height: 100%;
 }
 .sidebar a {
   border-bottom: 1px solid #ddd;

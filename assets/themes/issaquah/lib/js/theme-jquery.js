@@ -33,4 +33,5 @@ jQuery(document).ready(function($) {
 	});
     $(".site-header").sticky();
     $("nav.nav-primary").sticky({topSpacing:140});
+    $(".sidebar-content .content-sidebar-wrap main.content,.sidebar-content .content-sidebar-wrap aside.sidebar-primary").equalHeightColumns();
 });
