@@ -6942,10 +6942,9 @@ Site Header
 ---------------------------------------------------------------------------------------------------- */
 .site-header {
   background-color: #384B45;
-}
-.site-header .wrap {
-  padding: 40px 0;
-  padding: 4rem 0;
+  padding: 20px 0;
+  padding: 2rem 0;
+  z-index: 300;
 }
 /* Title Area
 --------------------------------------------- */
@@ -7000,9 +6999,9 @@ Site Header
 }
 .header-image .site-title a {
   float: left;
-  min-height: 70px;
+  min-height: 80px;
   width: 292px;
-  height: 70px;
+  height: 80px;
   background: url(../img/logo.gif) no-repeat center left;
   background-size: contain;
   margin: 10px 0;
@@ -7219,6 +7218,7 @@ Site Navigation
   font-size: 1.4rem;
   line-height: 1.625;
   background: #BDBBA2;
+  z-index: 300;
 }
 .nav-primary li.menu-item {
   padding: 0 1.6rem;
@@ -7719,36 +7719,16 @@ Sidebars
 Footer Widgets
 ---------------------------------------------------------------------------------------------------- */
 .footer-widgets {
-  position: relative;
-  border-top: 8px solid #2F5673;
-  background-color: #E3E2E0;
-  background-image: url(../img/demo-bkg.jpg);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  color: #2D2D2D;
+  background-color: #404040;
+  color: #FFF;
   clear: both;
   padding: 0;
 }
-.footer-widgets:before {
-  bottom: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-  border-color: rgba(47, 86, 115, 0);
-  border-bottom-color: #2F5673;
-  border-width: 20px 40px;
-  margin-left: -40px;
-}
 .footer-widgets a {
-  color: #2D2D2D;
+  color: #FFF;
 }
 .footer-widgets a:hover {
-  color: #404040;
+  color: #E3E2E0;
 }
 .footer-widgets .widget {
   margin: 0 auto;
@@ -7900,8 +7880,8 @@ Footer Widgets
 Site Footer
 ---------------------------------------------------------------------------------------------------- */
 .site-footer {
-  background-color: #E3E2E0;
-  color: #404040;
+  background-color: #2D2D2D;
+  color: #FFF;
   font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;
   font-size: 10px;
@@ -8189,8 +8169,14 @@ Site Footer
   }
 }
 .site-header .widget-area .widget.widget_text {
+  font-family: "Raleway", "Helvetica Neue", "Trebuchet MS", Calibri, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1.625;
   color: #FFF;
-  padding-top: 2em;
+  padding-top: 1.4em;
+  line-height: 1.8;
 }
 .msd-fa.block,
 .msd-icon.block {

@@ -31,5 +31,6 @@ jQuery(document).ready(function($) {
 	        $(this).html('LESS <i class="fa fa-angle-up"></i>');
 	    }
 	});
-	
+    $(".site-header").sticky();
+    $("nav.nav-primary").sticky({topSpacing:140});
 });
