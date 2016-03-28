@@ -8190,6 +8190,7 @@ nav.homepage-top .menu li {
   display: block;
   float: left;
   width: 50vw;
+  max-width: 50vw;
 }
 nav.homepage-top .menu li a {
   text-align: center;
