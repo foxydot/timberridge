@@ -75,18 +75,20 @@ nav.homepage-top{
   &.block{
     display: block;
     &:before{
-    margin: 0 auto;
+      margin: 0 auto;
       display: block;
     }
   }
   &.circle, &.square{
     &:before{
-      background: @blue;
+      background: darken(@blue,5%);
       color: @white;
+      border: 2px solid white;
       height: 2.4em;
       width: 2.4em;
       text-align: center;
       padding: 0.7em 0;
+      display: inline-block;
     }
   }
   &.circle{

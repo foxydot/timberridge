@@ -8258,12 +8258,14 @@ nav.homepage-top .menu li.lifestyle {
 .msd-icon.circle:before,
 .msd-fa.square:before,
 .msd-icon.square:before {
-  background: #2F5673;
+  background: #284861;
   color: #FFF;
+  border: 2px solid white;
   height: 2.4em;
   width: 2.4em;
   text-align: center;
   padding: 0.7em 0;
+  display: inline-block;
 }
 .msd-fa.circle:before,
 .msd-icon.circle:before {
