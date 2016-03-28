@@ -8201,8 +8201,8 @@ nav.homepage-top .menu li a {
   font-weight: 400;
   font-size: 80px;
   font-size: 8rem;
-  line-height: 1.625;
-  padding: 1em;
+  line-height: 1;
+  padding: 1em 0;
   color: #FFF;
 }
 nav.homepage-top .menu li a:hover {
@@ -8233,7 +8233,7 @@ nav.homepage-top .menu li.lifestyle {
   font-weight: 400;
   font-size: 80px;
   font-size: 8rem;
-  line-height: 1.625;
+  line-height: 1;
   padding: 1em;
   color: #FFF;
 }
