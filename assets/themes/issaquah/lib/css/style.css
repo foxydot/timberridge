@@ -8154,6 +8154,36 @@ Site Footer
   padding-top: 1.4em;
   line-height: 1.8;
 }
+nav.homepage-top .menu li {
+  width: 48%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+nav.homepage-top .menu li a {
+  text-align: center;
+  text-shadow: 0 0 8px #404040;
+  background: rgba(255, 255, 255, 0);
+  display: block;
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-size: 80px;
+  font-size: 8rem;
+  line-height: 1.625;
+  padding: 1em;
+  color: #FFF;
+}
+nav.homepage-top .menu li a:hover {
+  background: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  color: #2D2D2D;
+}
+nav.homepage-top .menu li.floor-plans {
+  background-image: url(../img/bkg_floorplans.jpg);
+}
+nav.homepage-top .menu li.lifestyle {
+  background-image: url(../img/bkg_lifestyle.jpg);
+}
 .msd-fa.block,
 .msd-icon.block {
   display: block;
