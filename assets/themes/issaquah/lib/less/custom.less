@@ -15,6 +15,9 @@ nav.homepage-top{
       background-repeat: no-repeat;
       background-position: center center;
       background-size: cover;
+      display: block;
+      float: left;
+      width: 50vw;
       a{
         text-align: center;
         text-shadow: 0 0 8px @medgrey;
@@ -36,6 +39,36 @@ nav.homepage-top{
         background-image: url(../img/bkg_lifestyle.jpg);
       }
     }
+  }
+}
+
+.page-title-area{
+  background: @white;
+  .banner{
+    background-image: url(../img/pg_bkg_lifestyle.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    .texturize{
+      .gradient{
+      }
+    }
+  }
+}
+.section-title{
+  text-align: center;
+  text-shadow: 0 0 8px @medgrey;
+  background: fade(@white,0%);
+  display: block;
+  .script(8);
+  padding: 1em;
+  color: @white;
+  a, a:visited {
+    color: @white;
+    opacity: 0.5;
+  }
+  a:hover {
+    text-decoration: none;
+    opacity: 1;
   }
 }
 .msd-fa, .msd-icon{

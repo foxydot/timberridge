@@ -6326,8 +6326,8 @@ body {
   color: #2D2D2D;
   font-family: "Raleway", "Helvetica Neue", "Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 18px;
+  font-size: 1.8rem;
   line-height: 1.625;
 }
 a,
@@ -7395,7 +7395,7 @@ Site Navigation
 Content Area
 ---------------------------------------------------------------------------------------------------- */
 main.content {
-  padding: 2rem 0 2rem 2rem;
+  padding: 6rem 0 2rem 2rem;
 }
 /* Entries
 --------------------------------------------- */
@@ -7468,25 +7468,27 @@ article.entry {
 .entry-header .entry-title {
   font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;
-  font-size: 36px;
-  font-size: 3.6rem;
+  font-size: 28px;
+  font-size: 2.8rem;
   line-height: 1.625;
   font-weight: 500;
-  color: #404040;
+  color: #2F5673;
   line-height: 1.25;
-  margin: 0;
-  text-align: center;
+  margin: 0 0 2rem 0;
+  text-align: left;
+  text-transform: uppercase;
+  max-width: 75%;
 }
 .entry-header .entry-subtitle {
   font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;
-  font-size: 24px;
-  font-size: 2.4rem;
+  font-size: 21px;
+  font-size: 2.1rem;
   line-height: 1.625;
   font-weight: 300;
   color: #2F5673;
   line-height: 1.25;
-  text-align: center;
+  text-align: left;
 }
 /* Pagination
 --------------------------------------------- */
@@ -7651,7 +7653,7 @@ Sidebars
 .sidebar {
   background: #E3E2E0;
   color: #D4D4D6;
-  padding: 2rem 2rem 2rem 0;
+  padding: 6rem 2rem 2rem 0;
   height: 100%;
 }
 .sidebar a {
@@ -7894,11 +7896,6 @@ Site Footer
   font-size: 2em;
   line-height: 1;
 }
-.page-template-page-sectioned .site-container {
-  background: #E3E2E0;
-  background-repeat: no-repeat;
-  background-position: center top;
-}
 .page-template-page-sectioned .site-container .site-inner {
   background: transparent;
   padding: 0;
@@ -7906,9 +7903,6 @@ Site Footer
 }
 .page-template-page-sectioned .site-container .site-inner .content-sidebar-wrap {
   background: transparent;
-}
-.page-template-page-sectioned .site-container .site-inner .content-sidebar-wrap main article .entry-header .entry-title {
-  display: none;
 }
 .sectioned-page-wrapper {
   box-shadow: 0 0 12px 0 #2d2d2d;
@@ -8159,6 +8153,9 @@ nav.homepage-top .menu li {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  display: block;
+  float: left;
+  width: 50vw;
 }
 nav.homepage-top .menu li a {
   text-align: center;
@@ -8183,6 +8180,36 @@ nav.homepage-top .menu li.floor-plans {
 }
 nav.homepage-top .menu li.lifestyle {
   background-image: url(../img/bkg_lifestyle.jpg);
+}
+.page-title-area {
+  background: #FFF;
+}
+.page-title-area .banner {
+  background-image: url(../img/pg_bkg_lifestyle.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.section-title {
+  text-align: center;
+  text-shadow: 0 0 8px #404040;
+  background: rgba(255, 255, 255, 0);
+  display: block;
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-size: 80px;
+  font-size: 8rem;
+  line-height: 1.625;
+  padding: 1em;
+  color: #FFF;
+}
+.section-title a,
+.section-title a:visited {
+  color: #FFF;
+  opacity: 0.5;
+}
+.section-title a:hover {
+  text-decoration: none;
+  opacity: 1;
 }
 .msd-fa.block,
 .msd-icon.block {

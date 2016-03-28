@@ -52,12 +52,3 @@
 .sectioned-page-wrapper .section {
   text-align: center;
 }
-.sectioned-page-wrapper .section-products .row {
-  margin: 3rem 0;
-}
-.sectioned-page-wrapper .section-morbidity .section-title {
-  padding-bottom: 2rem;
-}
-.sectioned-page-wrapper .section-morbidity .section-body {
-  display: none;
-}

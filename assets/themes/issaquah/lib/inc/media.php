@@ -18,7 +18,7 @@ function msdlab_favicon_filter( $favicon_url ) {
     return get_stylesheet_directory_uri().'/lib/img/favicon.ico';
 }
 
-add_action('genesis_before_content','msd_post_image');
+//add_action('genesis_after_header','msd_post_image');
 /**
  * Manipulate the featured image
  */
@@ -63,43 +63,3 @@ function msd_insert_custom_image_sizes( $sizes ) {
 }
 }
 add_filter( 'image_size_names_choose', 'msd_insert_custom_image_sizes' );
-
-add_shortcode('carousel','msd_bootstrap_carousel');
-function msd_bootstrap_carousel($atts){
-    $slidedeck = new SlideDeck();
-    extract( shortcode_atts( array(
-        'id' => NULL,
-    ), $atts ) );
-    $sd = $slidedeck->get($id);
-    $slides = $slidedeck->fetch_and_sort_slides( $sd );
-    $i = 0;
-    foreach($slides AS $slide){
-        $active = $i==0?' active':'';
-        $items .= '
-        <div style="background: url('.$slide['image'].') center top no-repeat #000000;background-size: cover;" class="item'.$active.'">
-           '.$slide['content'].'
-        </div>';
-        $i++;
-    }
-    return msd_carousel_wrapper($items,array('id' => $id));
-}
-
-function msd_carousel_wrapper($slides,$params = array()){
-    extract( array_merge( array(
-    'id' => NULL,
-    'navleft' => '‹',
-    'navright' => '›',
-    'indicators' => FALSE
-    ), $params ) );
-    $ret = '
-<div class="carousel carousel-fade slide" id="myCarousel_'.$id.'">';
-    if($indicators){
-        $ret .= '<ol class="carousel-indicators">'.$indicators.'</ol>';
-    }
-    $ret .= '<div class="carousel-inner">'.($slides).'</div>
-    <div class="carousel-controls">
-        <a data-slide="prev" href="#myCarousel_'.$id.'" class="left carousel-control">'.$navleft.'</a>
-        <a data-slide="next" href="#myCarousel_'.$id.'" class="right carousel-control">'.$navright.'</a>
-    </div>
-</div>';
-}
