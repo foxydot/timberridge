@@ -207,26 +207,30 @@
 }
 
 
+
 /* Buttons */
-.button(@color:@orange) {
-  background-color: @color;
-  border-radius: 30px;
+.button(@background:@blue,@color:@blue) {
   padding: 6px 24px;
   .customsanserif;
-  color: #FFFFFF;
+  color: @color;
   font-size: 12px;
-  font-weight: normal;
+  font-weight: 700;
   text-transform: uppercase;
   display: table;
   margin: 12px auto;
   text-decoration: none;
-  width: 80%;
+  background-color: fade(@background,0%);
+  border: 2px solid @color;
+  border-radius: 6px;
 }
 
+.button{
+  .button();
+}
 
-.button-hover(@color:@orange) {
-  .button(@color);
-  background-color: darken(@color,10%);
+.button-hover(@background:@blue,@color:@blue) {
+  .button(@background,@color);
+  background-color: fade(@background,40%);
 }
 
 .button:hover,

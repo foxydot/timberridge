@@ -176,33 +176,44 @@ img {
 /* Forms
 --------------------------------------------- */
 
-input,
+input[type="text"],
+input[type="password"],
+input[type="color"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="range"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
 select,
-textarea {
+textarea  {
   background-color: @white;
-  border: 1px solid @medgrey;
-  //box-shadow: 1px 1px 3px @medgrey inset;
-  color: @dkgrey;
+  border: 0px solid @offwhite;
+  color: @medgrey;
   font-size: 14px;
   font-size: 1.4rem;
-  padding: 16px;
-  padding: 1.6rem;
+  padding: 0.5em;
   width: 100%;
 }
 
 input:focus,
 textarea:focus {
-  border: 1px solid @ltgrey;
   outline: none;
 }
 
 ::-moz-placeholder {
-  color: #999;
+  color: @dkgrey;
   opacity: 1;
 }
 
 ::-webkit-input-placeholder {
-  color: #999;
+  color: @dkgrey;
 }
 
 button,

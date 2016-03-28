@@ -1,4 +1,6 @@
 jQuery(document).ready(function($) {    
+    $(".sidebar-content .content-sidebar-wrap main.content,.sidebar-content .content-sidebar-wrap aside.sidebar-primary").equalHeightColumns();
+
     //do some little stuff for parralaxing
     // init controller
     var controller = new ScrollMagic({globalSceneOptions: {triggerHook: "onEnter", duration: $(window).height()*2}});

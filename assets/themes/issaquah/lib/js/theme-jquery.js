@@ -19,19 +19,12 @@ jQuery(document).ready(function($) {
 			return '<li class="separator">|</li>';
 		}
 	});
-	
-	$('.section.expandable .expand').click(function(){
-	    var target = $(this).parents('.section-body').find('.content');
-	    console.log(target);
-	    if(target.hasClass('open')){
-            target.removeClass('open');
-            $(this).html('MORE <i class="fa fa-angle-down"></i>');
-	    } else {
-	        target.addClass('open');
-	        $(this).html('LESS <i class="fa fa-angle-up"></i>');
-	    }
+	$('form.gplaceholder .gfield_label').each(function(){
+	    var placeholder = $(this).html();
+	    $(this).html('').addClass('hidden');
+        $(this).next('.ginput_container').find('input').attr('placeholder',placeholder.replace(/(<([^>]+)>)/ig,""));
+        $(this).next('.ginput_container').find('select option.first-child').html(placeholder.replace(/(<([^>]+)>)/ig,""));
 	});
     $(".site-header").sticky();
     $("nav.nav-primary").sticky({topSpacing:140});
-    $(".sidebar-content .content-sidebar-wrap main.content,.sidebar-content .content-sidebar-wrap aside.sidebar-primary").equalHeightColumns();
 });
