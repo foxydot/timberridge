@@ -13,6 +13,11 @@
 .sectioned-page-wrapper{
   .section{
     text-align: center;
+    background-size: cover;
+    .section-title{
+      padding: 0;
+      text-shadow: 0 0 0 rgba(255,255,255,0);
+    }
   }
   .section.section-forms{
     .background-image(linear-gradient(to right, @offwhite 0%,@offwhite 49.9%,@blue 50%,@blue 100%));
@@ -37,6 +42,33 @@
          .button(@white,@white);
        }
      }
+    }
+  }
+  .section.section-lifestyle{
+    color: @white;
+    padding: 8rem 0;
+    .section-title{
+      h3{
+        color: @white;
+      }
+    }
+    .section-body{
+      .wrap{
+        max-width: 700px;
+      }
+    }
+  }
+  .section.section-programs{
+    padding: 8rem 0;
+    .section-title{
+      h3{
+        color: @blue;
+      }
+    }
+    .section-body{
+      .wrap{
+        max-width: 700px;
+      }
     }
   }
 }
