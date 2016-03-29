@@ -269,8 +269,10 @@ function msdlab_do_section_title(){
     } elseif(is_page()){
         global $post;
         $myid = $post->ID;
+        $lvl = 1;
         if(get_section_title()!=$post->post_title){
             add_action('genesis_entry_header','genesis_do_post_title',5);
+            $lvl = 2;
             $myid = get_topmost_parent($post->ID);
         }
         $background = strlen(msdlab_get_thumbnail_url($myid,'full'))>0?' style="background-image:url('.msdlab_get_thumbnail_url($myid,'full').')"':'';
@@ -278,9 +280,9 @@ function msdlab_do_section_title(){
         print '<div class="texturize">';
         print '<div class="gradient">';
         print '<div class="wrap">';
-        print '<h2 class="section-title">';
+        print '<h'.$lvl.' class="section-title">';
         print get_section_title();
-        print '</h2>';
+        print '</h'.$lvl.'>';
         print '</div>';
         print '</div>';
         print '</div>';
