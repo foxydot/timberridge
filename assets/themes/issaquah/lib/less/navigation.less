@@ -246,60 +246,76 @@ Site Navigation
 
 .widget_advanced_menu{
   .menu{
+    display: block;
     >li{
-      i{
-        margin-right: 1em;
-        color: @ltgrey;
-        cursor: pointer;
-      }
+      display: none;
+      &.current-menu-item,&.current-menu-ancestor{
+      display: block;
       a{
         text-decoration: none;
-        font-size: 18px;
-        font-size: 1.8rem;
+        font-size: 22px;
+        font-size: 2.2rem;
         border-bottom: 0;
+        color: @blue;
       }
-      >ul.sub-menu{
+      ul.sub-menu{
         max-height: 0;
-        overflow: hidden;
         display: block;
-        margin-left: 2rem;
+        margin-left: 0;
+        overflow: hidden;
         -webkit-transition: all 2s ease-in-out;
         -moz-transition: all 2s ease-in-out;
         -ms-transition: all 2s ease-in-out;
         -o-transition: all 2s ease-in-out;
         transition: all 2s ease-in-out;
-        li{
-          border-bottom: 0.5px solid @vltgrey;
-          margin: 0;
-          a{
-            padding: 1rem;
-            display: block; 
-            width: 100%;
-            font-size: 12px;
-            font-size: 1.2rem;
-            font-weight: 400;
-          }
-          a:before{
-            .fontawesome;
-            content: '\f105';
-            margin-right: 1em;
-            color: @ltgrey;
-          }
-          a:hover{
-            background: fade(@medgrey,10%);
-            text-decoration: none;
-           }
-        }
-        li.current-menu-item{
-          a{
-          }
-        }
       }
-    }
-    >li.open{
       >ul.sub-menu{
         height: auto;
         max-height: 400px;
+      }
+        li{
+          border-top: 2px dashed @vltgrey;
+          margin: 0;
+          &.first-child{
+            border-top: 0;
+          }
+          i{
+            color: @medgrey;
+            width: 1em;
+            margin: 0 1rem;
+          }
+          i.fa-plus,i.fa-minus{
+            cursor: pointer;
+          }
+          a{
+            color: @medgrey;
+            padding: 1rem 0;
+            display: inline-block; 
+            width: 80%;
+            font-size: 18px;
+            font-size: 1.8rem;
+            font-weight: 400;
+          }
+          &:hover{
+            background: fade(@medgrey,10%);
+            a:hover{
+              text-decoration: none;
+            }
+           } 
+           >ul.sub-menu{
+             background: @offwhite;
+              li{
+                border-top: 2px dashed @vltgrey;
+                padding-left: 6rem;
+              }
+           }
+          &.open{
+            >ul.sub-menu{
+              height: auto;
+              max-height: 400px;
+            }
+          }
+        }
       }
     }
   }
