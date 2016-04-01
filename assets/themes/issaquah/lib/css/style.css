@@ -7480,6 +7480,65 @@ article.entry {
 .entry-content .gallery a {
   border: none;
 }
+.entry-content {
+  /**
+   * 14.2 Galleries
+   */
+}
+.entry-content .gallery {
+  margin-bottom: 1.6em;
+}
+.entry-content figure.gallery-item,
+.entry-content .gallery-item {
+  display: inline-block;
+  padding: 1.79104477%;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+}
+.entry-content .gallery-columns-2 .gallery-item {
+  max-width: 50%;
+}
+.entry-content .gallery-columns-3 .gallery-item {
+  max-width: 33.33%;
+}
+.entry-content .gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+.entry-content .gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+.entry-content .gallery-columns-6 .gallery-item {
+  max-width: 16.66%;
+}
+.entry-content .gallery-columns-7 .gallery-item {
+  max-width: 14.28%;
+}
+.entry-content .gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+.entry-content .gallery-columns-9 .gallery-item {
+  max-width: 11.11%;
+}
+.entry-content .gallery-icon img {
+  margin: 0 auto;
+}
+.entry-content .gallery-caption {
+  color: #707070;
+  color: rgba(51, 51, 51, 0.7);
+  display: block;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 12px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  padding: 0.5em 0;
+}
+.entry-content .gallery-columns-6 .gallery-caption,
+.entry-content .gallery-columns-7 .gallery-caption,
+.entry-content .gallery-columns-8 .gallery-caption,
+.entry-content .gallery-columns-9 .gallery-caption {
+  display: none;
+}
 .entry-content ol,
 .entry-content p,
 .entry-content ul,
@@ -7958,7 +8017,11 @@ Site Footer
 .site-footer .wrap p {
   margin-bottom: 0;
 }
-.site-footer .wrap i.icon {
+.site-footer .wrap div.icons {
+  display: inline-block;
+  position: relative;
+}
+.site-footer .wrap div.icons i.icon {
   display: inline-block;
   height: 15px;
   width: 20px;
@@ -7969,20 +8032,26 @@ Site Footer
   font-size: 18px;
   font-weight: 700;
 }
-.site-footer .wrap i.icon-equal-housing {
+.site-footer .wrap div.icons i.icon-equal-housing {
   background-image: url(../img/icon-equal-housing.png);
 }
-.site-footer .wrap i.logo {
+.site-footer .wrap div.icons i.logo {
   height: 40px;
-  width: 40px;
-  position: absolute;
-  top: -12px;
+  position: relative;
+  top: 12px;
   display: inline-block;
   margin: 0 4px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
+}
+.site-footer .wrap div.icons i.logo-leed {
+  width: 40px;
   background-image: url(../img/logo-leed.svg);
+}
+.site-footer .wrap div.icons i.logo-lcs {
+  width: 90px;
+  background-image: url(../img/logo-lcs.svg);
 }
 .site-footer .wrap .backtotop {
   position: absolute;
