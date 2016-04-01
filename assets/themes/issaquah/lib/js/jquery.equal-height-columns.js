@@ -1,227 +1,123 @@
-/**
- * Set all passed elements to the same height as the highest element.
- * 
- * Copyright (c) 2012 Ewen Elder
- * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
- *
- * @author: Ewen Elder <glomainn at yah0o d0t c0 dot uk> <ewen at jainaewen d0t-com>
- * @version: 2.0
- */ 
-'use strict';
+/*global jQuery */
+/*! 
+* equalHeightColumns.js 1.2
+* https://github.com/PaulSpr/jQuery-Equal-Height-Columns
+*
+* Copyright 2014, Paul Sprangers http://paulsprangers.com
+* Released under the WTFPL license 
+* http://www.wtfpl.net
+*
+* Date: Sat Dec 13 11:30:00 2014 +0100
+*/
 
-;(function($)
-{
-	$.equalHeightColumns = {
-		version : 2.0
-	};
-	
-	
-	
-	
-	/**
-	 * Default plugin options.
-	 * 
-	 * @access public
-	 */
-	$.equalHeightColumns.defaults = {
-		speed : 0,
-		height : 0,
-		minHeight : 0,
-		maxHeight : 0
-	};
-	
-	
-	
-	
-	/**
-	 * Resize columns
-	 * 
-	 * Extend-able method for performing the column resizing, the 'this' context of this method is
-	 * the jQuery collection of elements that will be resized (set using $.proxy()), This method is
-	 * part of the default options for simple extending or overriding if desired.
-	 * 
-	 * @access public
-	 */
-	$.equalHeightColumns.defaults.resize = function()
-	{
-		var options = $(this).data('equalHeightColumns.options'),
-			height = +options.height,
-			currentHeight;
-		
-		
-		// If options.height is false, then find which element is the highest.
-		if (!height)
-		{
-			$(this).each(function()
-			{
-				currentHeight = $(this).height();
-				
-				// Test natural height.
-				$(this).css('height', 'auto');
-				
-				
-				// If this element's height is more than is store in 'height' then update 'height'.
-				if ($(this).height() > height)
-				{
-					height = $(this).height();
-				}
-				
-				
-				// Restore current height - this is mainly to stop animated height changes screwing up.
-				$(this).height(currentHeight);
-			});
-		}
-		
-		
-		// Enforce min height.
-		height = (options.minHeight && height < options.minHeight) ? options.minHeight : height;
-		
-		
-		// Enforce max height.
-		height = (+options.maxHeight && height > +options.maxHeight) ? +options.maxHeight : height;
-		
-		
-		// Animate the column's height change.
-		$(this).animate({height : height}, +options.speed);
-	};
-	
-	
-	
-	
-	/**
-	 * Perform actions
-	 * 
-	 * Extend-able method that deals with destroy, refresh and option getter and setter, Return boolean 
-	 * false to prevent the plugin continuing through it's normal process, returning true will allow it 
-	 * to continue through as normal unless the action is 'option' and you are getting the option value; 
-	 * in this case it will abort the plugin's process,
-	 * 
-	 * Simply extend this method when setting the options to add your own actions or replace any of the
-	 * existing actions.
-	 * 
-	 * @param {String} action The action to be performed.
-	 * @param {String} option Optional parameter specifying an option to get or set.
-	 * @param {Mixed} value Value to be used when setting option.
-	 * @return {Mixed} Return boolean false to stop the plugin's normal resize functionality after the action is complete.
-	 * 
-	 * @access public
-	 */
-	$.equalHeightColumns.defaults.actions = function(action, option, value)
-	{
-		var options = $(this).data('equalHeightColumns.options'),
-			height;
-		
-		
-		switch (action)
-		{
-			case 'option' :
-				if (options && typeof options[option] !== 'undefined')
-				{
-					if (typeof value !== 'undefined')
-					{
-						options[option] = value;
-						
-						$(this).data('equalHeightColumns.options', options);
-					}
-					
-					else
-					{
-						return options[option];
-					}
-					
-				}
-				
-				return false;
-				break;
-			
-			case 'destroy' :
-				$(this)
-					.removeData('equalHeightColumns.options')
-					.each(function()
-					{
-						height = $(this).data('equalHeightColumns.originalHeight');
-						
-						if (height)
-						{
-							$(this).height(height);
-						}
-					});
-				
-				return false;
-				break;
-			
-			case 'refresh' :
-				return true;
-				break;
-			
-			default :
-				return false;
-				break;
-		}
-	};
-	
-	
-	
-	
-	/**
-	 * The Equal Height Column plugin
-	 * 
-	 * Check whether to apply the plugin - or perform an action like set option or refresh etc.
-	 * 
-	 * @param {Mixed} options Either the options object when initiating the plugin or the name of an action to perform.
-	 * @param {String} option The name of an option to get or set.
-	 * @param {Mixed} value The value that the option specified in the 'option' argument should be.
-	 */
-	$.fn.equalHeightColumns = function(options, option, value)
-	{
-		var action = typeof options === 'string' ? options : false,
-			method,
-			resize,
-			height;
-		
-		
-		// If an action is being requested then call the actions method.
-		if (action)
-		{
-			options = $.extend({}, $.equalHeightColumns.defaults, $(this).data('equalHeightColumns.options'));
-			
-			method = $.proxy(options.actions, this);
-			
-			
-			if (action === 'option' && typeof value === 'undefined')
-			{
-				return method(action, option);
-			}
-			
-			else if (method(action, option, value) === false)
-			{
-				return $(this);
-			}
-		}
-		
-		
-		options = $.extend({}, $.equalHeightColumns.defaults, options);
-		
-		$(this).data('equalHeightColumns.options', options);
-		
-		
-		// Store the original height of each passed element for use in the destroy action.
-		$(this).each(function()
-		{
-			if (typeof $(this).data('equalHeightColumns.originalHeight') === 'undefined')
-			{
-				$(this).data('equalHeightColumns.originalHeight', $(this).height());
-			}
-		});
-		
-		
-		method = $.proxy(options.resize, this);
-		
-		method();
-		
-		
-		return $(this);
-	};
-})(jQuery);
+(function( $ ){
+
+    $.fn.equalHeightColumns = function( options ) {
+
+            defaults = { 
+                minWidth: -1,               // Won't resize unless window is wider than this value
+                maxWidth: 99999,            // Won't resize unless window is narrower than this value
+                setHeightOn: 'min-height',   // The CSS attribute on which the equal height is set. Usually height or min-height
+                defaultVal: 0,              // Default value (for resetting columns before calculation of the maximum height) for the CSS attribute defined via setHeightOn, e.g. 'auto' for 'height' or 0 for 'minHeight'
+                equalizeRows: false,        // Give every column in indiviual rows even height. Every row can have a different height this way
+                checkHeight: 'height'       // Which height to check, using box-sizing: border-box, innerHeight is probably more appropriate
+            };
+
+            var $this   = $(this); // store the object
+            options     = $.extend( {}, defaults, options ); // merge options
+            
+            // Resize height of the columns
+            var resizeHeight = function () {
+
+                // Get window width
+                var windowWidth = $(window).width();
+                var currentElements = Array();
+
+                // Check to see if the current browser width falls within the set minWidth and maxWidth
+                if( options.minWidth < windowWidth  &&  options.maxWidth > windowWidth ){
+                    var height = 0;
+                    var highest = 0;
+                    var yPos = 0;
+
+                    // Reset heights
+                    $this.css( options.setHeightOn, options.defaultVal );
+
+                    // Figure out the highest element
+                    $this.each( function(){
+
+                        if( options.equalizeRows ){
+                            // Check if y position of the element is bigger, if so, it's on another row.
+                            // Make sure that the height is only set relative to elements in the same row.
+                            var elYPos = $(this).position().top;
+
+                            if( elYPos != yPos ){
+                                // new row, so set the height of the elements of the previous row
+                                if( currentElements.length > 0 ) {
+                                    $(currentElements).css(options.setHeightOn, highest);
+                                    // clear the array and reset values for the new row
+                                    highest = 0;
+                                    currentElements = [];
+                                }
+                                // get element elYPos again since it might have changed because of the resize
+                                yPos = $(this).position().top;
+
+                            }
+
+                            currentElements.push(this);
+                        }
+
+                        // do the height check and if it's the highest, set it as such
+                        height = $(this)[options.checkHeight]();
+
+                        if( height > highest ){
+                            highest = height;
+                        }
+
+                    } );
+
+                    if( !options.equalizeRows ){
+                        // Set that height on the elements at once
+                        $this.css( options.setHeightOn, highest );
+                    }
+                    else{
+                        // set height on elements in last row
+                        $(currentElements).css( options.setHeightOn, highest );
+                    }
+
+                }
+                else{
+                    // Add check so this doesn't have to happen everytime 
+                    $this.css(options.setHeightOn, options.defaultVal);
+                }
+            };
+
+            // Call once to set initially
+            resizeHeight();
+
+            // Call on resize. Opera debounces their resize by default. 
+            $(window).resize(resizeHeight);
+            
+            // Also check if any images are present and recalculate when they load
+            // there might be an optimization opportunity here
+            $this.find('img').load( resizeHeight );
+            
+            // If afterLoading is defined, add a load event to the selector
+            if ( typeof options.afterLoading !== 'undefined' ) {
+                $this.find(options.afterLoading).load( resizeHeight );
+            }
+            
+            // If afterTimeout is defined use it a the timeout value
+            if ( typeof options.afterTimeout !== 'undefined' ) {
+                setTimeout(function(){
+                    resizeHeight();
+                    
+                    // check afterLoading again, to make sure that dynamically added nodes are present
+                    if ( typeof options.afterLoading !== 'undefined' ) {
+                        $this.find(options.afterLoading).load( resizeHeight );
+                    }
+                }, options.afterTimeout);
+            }
+
+    };
+
+})( jQuery );

@@ -38,8 +38,21 @@
      &.column-2{
        background-color: @green;
        color: @white;
+       .icon-calculator{
+         &:before{
+           margin: 2rem 0;
+           content: '';
+           height: 160px;
+           width: 160px;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 70px auto;
+           background-image:url(../img/icon-calculator.png);
+         }
+       }
        .button{
          .button(@white,@white);
+         font-size: 14px;
        }
      }
     }

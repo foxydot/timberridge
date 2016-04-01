@@ -72,6 +72,41 @@ nav.homepage-top{
     opacity: 1;
   }
 }
+.sidebar.sidebar-primary{
+  section.widget.widget_text{
+    padding: 2rem;
+    margin-bottom: 4rem;
+    .widget-wrap{
+      background-color: @green;
+      border-radius: 12px;
+      text-align: center;
+      padding: 2rem;
+      font-size: 2.1rem;
+      .widget-title{
+          background-repeat: no-repeat;
+          background-position: center left;
+          background-size: 50px auto;
+          background-image:url(../img/icon-calculator.png);
+          padding-left: 55px;
+          color: fade(@white,50%);
+          font-size: 3rem;
+          line-height: 1;
+          span.word4{
+            font-weight: 700;
+            font-size: 3.8rem;
+            color: fade(@white,100%);
+          }
+      }
+      .button{
+        .button(@ltgreen,@green);
+        background-color: @ltgreen;
+        font-size: 14px;
+        width: 98%;
+      }
+    }
+  }
+}
+
 .msd-fa, .msd-icon{
   &.block{
     display: block;

@@ -100,6 +100,16 @@
   background-color: #384B45;
   color: #FFF;
 }
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .icon-calculator:before {
+  margin: 2rem 0;
+  content: '';
+  height: 160px;
+  width: 160px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70px auto;
+  background-image: url(../img/icon-calculator.png);
+}
 .sectioned-page-wrapper .section.section-forms .section-content.column-2 .button {
   padding: 6px 24px;
   font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
@@ -117,6 +127,7 @@
   background-color: rgba(255, 255, 255, 0);
   border: 2px solid #FFF;
   border-radius: 6px;
+  font-size: 14px;
 }
 .sectioned-page-wrapper .section.section-lifestyle {
   color: #FFF;

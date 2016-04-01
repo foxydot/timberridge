@@ -18,6 +18,7 @@ function msdlab_do_social_footer(){
     print '<div class="row">';    
     print '<div class="social">'.$copyright.' '.$address.'</div>';
     print '<nav class="footer-menu" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" role="navigation">'.$footer_menu.'</nav>';
+    print '<i class="icon icon-equal-housing"></i><i class="icon fa fa-wheelchair"></i><i class="logo logo-leed"></i>';
     print '</div>';
     //print '<div class="backtotop"><a href="#pre-header"><i class="fa fa-angle-up"></i></a></div>';
 }

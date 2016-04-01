@@ -1,4 +1,5 @@
-jQuery(document).ready(function($) {    
+jQuery(document).ready(function($) {
+    $('.sidebar-primary .widget_text .widget-title').lettering('words');    
     $(".sidebar-content .content-sidebar-wrap main.content,.sidebar-content .content-sidebar-wrap aside.sidebar-primary").equalHeightColumns(
         {checkHeight: 'innerHeight'}
     );
