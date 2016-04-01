@@ -8407,24 +8407,6 @@ nav.homepage-top .menu li.lifestyle {
   div.wrap {
     padding: 0 15px;
   }
-  .header-image .site-header {
-    margin: 0 auto;
-    text-align: center;
-  }
-  .header-image .site-header .title-area {
-    width: 100%;
-    margin: 0 auto;
-    float: none;
-  }
-  .header-image .site-header .title-area .site-title a {
-    width: 100%;
-    margin: 1rem auto;
-    float: none;
-  }
-  .header-image .site-header .nav-primary {
-    margin: 0 auto;
-    float: none;
-  }
   .nav-primary {
     float: none;
     display: block;
@@ -8551,6 +8533,24 @@ nav.homepage-top .menu li.lifestyle {
   }
   .pre-header .wrap .header-widget-area .msd-connected {
     margin-top: -1.5rem;
+  }
+  .header-image .site-header {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .header-image .site-header .title-area {
+    width: 100%;
+    margin: 0 auto;
+    float: none;
+  }
+  .header-image .site-header .title-area .site-title a {
+    width: 100%;
+    margin: 1rem auto;
+    float: none;
+  }
+  .header-image .site-header .nav-primary {
+    margin: 0 auto;
+    float: none;
   }
   .tablepress td,
   .tablepress th {

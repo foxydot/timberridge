@@ -63,6 +63,30 @@
   clear: both;
   visibility: hidden;
 }
+.pre-header {
+  min-height: 170px;
+  padding: 100px 0;
+  background-image: url(../img/bkg_hdr_home.jpg);
+  background-position: center center;
+  background-size: cover;
+  margin-bottom: -140px;
+}
+.pre-header .logo {
+  height: 170px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 30%;
+  background-image: url(../img/logo_shadow.png);
+}
+.site-header {
+  opacity: 0;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
 .site-inner .button,
 .site-inner .button:hover {
   width: auto;

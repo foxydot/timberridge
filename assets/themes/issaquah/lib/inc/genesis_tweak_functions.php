@@ -57,11 +57,18 @@ function msdlab_add_apple_touch_icons(){
  * Add pre-header with social and search
  */
 function msdlab_pre_header(){
-    print '<div id="pre-header" class="pre-header">
-        <div class="wrap">';
-           do_action('msdlab_pre_header');
-    print '
-        </div>
+    if(is_front_page()){
+        print '<div id="pre-header" class="pre-header">
+            <div class="wrap">';
+               do_action('msdlab_pre_header');
+        print '
+            </div>
+        </div>';
+    }
+}
+
+function msdlab_pre_header_logo(){
+    print '<div class="logo">
     </div>';
 }
 
