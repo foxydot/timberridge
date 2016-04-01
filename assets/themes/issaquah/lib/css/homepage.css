@@ -67,7 +67,7 @@
   min-height: 170px;
   padding: 100px 0;
   background-image: url(../img/bkg_hdr_home.jpg);
-  background-position: center center;
+  background-position: center 75%;
   background-size: cover;
   margin-bottom: -140px;
 }
@@ -187,20 +187,20 @@ nav.homepage-top .menu li.lifestyle {
   font-size: 14px;
 }
 .sectioned-page-wrapper .section.section-lifestyle {
-  color: #FFF;
   padding: 8rem 0;
 }
 .sectioned-page-wrapper .section.section-lifestyle .section-title h3 {
-  color: #FFF;
+  color: #2F5673;
 }
 .sectioned-page-wrapper .section.section-lifestyle .section-body .wrap {
   max-width: 700px;
 }
 .sectioned-page-wrapper .section.section-programs {
+  color: #FFF;
   padding: 8rem 0;
 }
 .sectioned-page-wrapper .section.section-programs .section-title h3 {
-  color: #2F5673;
+  color: #FFF;
 }
 .sectioned-page-wrapper .section.section-programs .section-body .wrap {
   max-width: 700px;
