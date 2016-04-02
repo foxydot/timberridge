@@ -20,18 +20,71 @@
 
 /* Smaller screens */
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 1099px) {
   /* Enter Your Custom Styles Here */ 
   div.wrap {
     padding: 0 15px;
   }
-  .nav-primary  {
-    float: none;
-    display: block;
+  .genesis-nav-menu{
   }
-  .nav-responsive {
-    text-align: left;
-    border-bottom: 0;
+  .nav-primary{
+    li.menu-item{
+      padding: 0 1vw;
+      font-size: 1.2vw;
+      a{
+        padding: 1.2vw 1vw;
+        border-bottom-width: 0.4vw;
+      }
+      &:hover,&.current-menu-ancestor,&.current-menu-item{
+        a{
+          border-bottom-width: 0.4vw
+        }
+      }
+      .sub-menu{
+        a{
+          font-size: 1.2vw;
+        }
+      }
+    }
+  }
+  .footer-widgets{
+    padding-left: 2vw;
+    padding-right: 2vw;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  /* Enter Your Custom Styles Here */ 
+  .section-title{
+    font-size: 7vw;
+  }
+  .site-inner {
+    background-image: none;
+  }
+  .footer-widgets{
+    .widget.widget_nav_menu ul.menu {
+      -moz-column-count: 2;
+      -webkit-column-count: 2;
+      column-count: 2;
+    }
+  }
+}
+
+
+/* Mobile */
+
+@media only screen and (max-width: 767px) {
+  /* Enter Your Custom Styles Here */ 
+  
+  .mobile-only {display: block;}
+ 
+}
+
+
+@media only screen and (max-width : 479px) {
+    .nav-responsive {
+      text-align: left;
+      border-bottom: 0;
     ul {
       display: none;
       height: auto;
@@ -41,14 +94,13 @@
       width: 100%;
       position: relative;
       text-indent: 20px;
-      background: @blue;
-      min-height: 46px;
+      background: @ltgreen;
+      min-height: 50px;
       padding-top: 14px;
       position: relative;
       > strong {
         color: #fff;
         text-decoration: none;
-        text-shadow:1px 1px 1px rgba(0, 0, 0, 0.78);
         font-size: 1.2rem;
       }
       ul#mobile_menu {
@@ -59,7 +111,7 @@
           list-style: none;
           padding: 0;
           a{
-            background: @blue;
+            background: @ltgreen;
             color: @white;
             display: block;
             width: 100%;
@@ -73,7 +125,7 @@
             }
           }
           a:hover{
-            background: lighten(@blue,10%);
+            background: lighten(@ltgreen,10%);
           }
           .toggle-switch{
             margin-right: 12px;
@@ -111,7 +163,7 @@
         }
         li.current-menu-item{
           a{
-          background: lighten(@blue, 15%);
+          background: lighten(@ltgreen, 15%);
           }
         }
       }
@@ -122,33 +174,17 @@
   } 
   .nav-responsive a#pull:after {
     content:"\f0C9";
+    font-weight: 400;
     font-family: 'FontAwesome';
     font-size: 2.2rem;
     text-indent: 0;
-    color: @blue;
+    color: @white;
     text-align: center;
-    width: 30px;
-    height: 30px;
-    .border-radius(4px);
-    background: @white;
     display: inline-block;
     position: absolute;
     right: 15px;
-    top: 10px;
-  }  
-}
-
-/* Mobile */
-
-@media only screen and (max-width: 767px) {
-  /* Enter Your Custom Styles Here */ 
-  
-  .mobile-only {display: block;}
- 
-}
-
-
-@media only screen and (max-width : 479px) {  
+    top: 0.25em;
+  }    
   /* Enter Your Custom Styles Here */ 
   .pre-header{
     .wrap{
@@ -184,14 +220,24 @@
             width: 100%;
             margin: 1rem auto;
             float: none;
+            background-position: center center;
           }
         }
       }
-      .nav-primary{
+      .widget-area{
+        width: 100%;
         margin: 0 auto;
         float: none;
+        text-align: center;
       }
      }
+    .nav-primary{
+      margin: 0 auto;
+      float: none;
+      .wrap{
+      padding: 0;
+      }
+    }
   }
   .tablepress td, .tablepress th {display: inline-block;}
 } 

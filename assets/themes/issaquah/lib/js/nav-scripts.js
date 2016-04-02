@@ -3,7 +3,7 @@ jQuery(document).ready(function(){
 /*RESPONSIVE NAVIGATION, COMBINES MENUS EXCEPT FOR FOOTER MENU*/
 
     //jQuery('.menu').not('#footer .menu, #footer-widgets .menu').wrap('<div id="nav-response" class="nav-responsive">');
-    jQuery('#menu-primary-links').wrap('<div id="nav-response" class="nav-responsive">');
+    jQuery('#menu-primarynav').wrap('<div id="nav-response" class="nav-responsive">');
     jQuery('#nav-response').append('<a href="#" id="pull" class="closed"><strong>MENU</strong></a>');   
     
     //move the search box
@@ -19,11 +19,11 @@ jQuery(document).ready(function(){
                 jQuerycloned_nav = append_to.find('> ul');
                 jQuerycloned_nav.find('.menu_slide').remove();
                 jQuerycloned_nav.find('li:first').addClass('sf_first_mobile_item');
-                jQuerycloned_nav.find('li.menu-item-has-children>a').append('<span class="toggle-switch pull-right"><i class="fa fa-2x fa-chevron-circle-right"></i></span>');
+                jQuerycloned_nav.find('li.menu-item-has-children>a').append('<span class="toggle-switch pull-right"><i class="fa fa-2x fa-angle-down"></i></span>');
                 jQuerycloned_nav.find('li.menu-item-has-children .sub-menu').hide();
                 jQuerycloned_nav.find('li.current-menu-ancestor>.sub-menu').show();
                 jQuerycloned_nav.find('li.current-menu-ancestor').removeClass( 'closed' ).addClass( 'opened' );
-                jQuerycloned_nav.find('li.current-menu-ancestor>a>span>i').removeClass('fa-chevron-circle-right').addClass('fa-chevron-circle-down');
+                jQuerycloned_nav.find('li.current-menu-ancestor>a>span>i').removeClass('fa-angle-down').addClass('fa-angle-up');
                 
                 append_to.click( function(){
                     if ( jQuery(this).hasClass('closed') ){
@@ -48,11 +48,11 @@ jQuery(document).ready(function(){
      jQuery('#pull li .toggle-switch').click( function(e){
          e.preventDefault();
         if ( jQuery(this).parent('a').parent('li').hasClass('opened') ){
-            jQuery(this).children('i').removeClass('fa-chevron-circle-down').addClass('fa-chevron-circle-right');
+            jQuery(this).children('i').removeClass('fa-angle-up').addClass('fa-angle-down');
             jQuery(this).parent('a').parent('li').removeClass( 'opened' ).addClass( 'closed' );
-            jQuery(this).parent('a').parent('li').find('.sub-menu').slideUp( 500 ).parent('li').removeClass( 'opened' ).addClass( 'closed' ).find('i').removeClass('fa-chevron-circle-down').addClass('fa-chevron-circle-right');
+            jQuery(this).parent('a').parent('li').find('.sub-menu').slideUp( 500 ).parent('li').removeClass( 'opened' ).addClass( 'closed' ).find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
         } else {
-            jQuery(this).children('i').removeClass('fa-chevron-circle-right').addClass('fa-chevron-circle-down');
+            jQuery(this).children('i').removeClass('fa-angle-down').addClass('fa-angle-up');
             jQuery(this).parent('a').parent('li').removeClass( 'closed' ).addClass( 'opened' );
             jQuery(this).parent('a').parent('li').find('.sub-menu').slideDown( 500 );
             jQuery(this).parent('a').parent('li').find('.sub-menu>li>.sub-menu').hide();

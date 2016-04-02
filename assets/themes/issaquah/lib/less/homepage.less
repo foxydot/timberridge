@@ -76,7 +76,15 @@ nav.homepage-top{
   }
   .section.section-forms{
     .background-image(linear-gradient(to right, @offwhite 0%,@offwhite 49.9%,@green 50%,@green 100%));
+    border-bottom: 6px solid @green;
+    .section-body{
+      .wrap{
+        padding: 0;
+      }
+    }
     .section-content{
+      padding-left: 10vw;
+      padding-right: 10vw;
       .gform_wrapper{
         margin:0;
       }
@@ -137,6 +145,59 @@ nav.homepage-top{
       .wrap{
         max-width: 700px;
       }
+    }
+  }
+}
+
+
+
+@media only screen and (max-width: 980px) {
+  nav.homepage-top{
+    .menu{
+      li{
+        a{
+          font-size: 7vw;
+        }
+      }
+    }
+  }
+    
+  .sectioned-page-wrapper{
+    .section.section-forms{
+    .background-image(linear-gradient(to bottom, @offwhite 0%,@offwhite 49.9%,@green 50%,@green 100%));
+      border-top: 6px solid @green;
+      border-bottom: 0 solid @green;
+      .section-content{
+       &.column-1{
+         background-color: @offwhite;
+       }
+       &.column-2{
+         background-color: @green;
+         color: @white;
+         .icon-calculator{
+           &:before{
+             margin: 2rem 0;
+             content: '';
+             height: 160px;
+             width: 160px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 70px auto;
+             background-image:url(../img/icon-calculator.png);
+           }
+         }
+         .button{
+           .button(@white,@white);
+           font-size: 14px;
+         }
+       }
+      }
+    }
+    .section.section-lifestyle{
+      padding: 7vw 0;
+    }
+    .section.section-programs{
+      padding: 7vw 0;
     }
   }
 }
