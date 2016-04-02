@@ -269,3 +269,18 @@ nav.homepage-top .menu li.lifestyle {
     padding: 7vw 0;
   }
 }
+@media only screen and (max-width: 479px) {
+  .pre-header {
+    margin-bottom: 0;
+  }
+  .pre-header .logo {
+    height: 60vh;
+    background-size: 80%;
+  }
+  .site-header {
+    opacity: 1;
+  }
+  .header-image .title-area {
+    display: none;
+  }
+}

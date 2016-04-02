@@ -25,6 +25,10 @@ jQuery(document).ready(function($) {
         $(this).next('.ginput_container').find('input').attr('placeholder',placeholder.replace(/(<([^>]+)>)/ig,""));
         $(this).next('.ginput_container').find('select option.first-child').html(placeholder.replace(/(<([^>]+)>)/ig,""));
 	});
-    $(".site-header").sticky();
-    $("nav.nav-primary").sticky({topSpacing:140});
+	if($( window ).width() > 480){
+        $(".site-header").sticky();
+        $("nav.nav-primary").sticky({topSpacing:140});
+    } else {
+        $("nav.nav-primary").sticky({});
+    }
 });

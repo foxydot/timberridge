@@ -8,12 +8,15 @@ jQuery(document).ready(function($) {
     
     var nav = $('nav.nav-primary');
     $(window).scroll(function () {
-        if ($(this).scrollTop() > 230) {
-            nav.addClass("scroll-nav");
-            $('header.site-header').css('opacity',1);
-        } else {
-            nav.removeClass("scroll-nav");
-            $('header.site-header').css('opacity',0);
+        
+        if($( window ).width() > 480){
+            if ($(this).scrollTop() > 230) {
+                nav.addClass("scroll-nav");
+                $('header.site-header').css('opacity',1);
+            } else {
+                nav.removeClass("scroll-nav");
+                $('header.site-header').css('opacity',0);
+            }
         }
     });
 });
