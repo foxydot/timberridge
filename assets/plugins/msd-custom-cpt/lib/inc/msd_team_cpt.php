@@ -125,7 +125,7 @@ if (!class_exists('MSDTeamCPT')) {
             if($current_screen->post_type == $this->cpt){
                 wp_enqueue_style('thickbox');
                 wp_enqueue_style('custom_meta_css',plugin_dir_url(dirname(__FILE__)).'/css/meta.css');
-                wp_enqueue_style('font-awesome-style','//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+                wp_enqueue_style('font-awesome-style','//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
             }
         }   
             
