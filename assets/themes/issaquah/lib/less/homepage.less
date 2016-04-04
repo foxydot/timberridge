@@ -83,10 +83,29 @@ nav.homepage-top{
       }
     }
     .section-content{
-      padding-left: 10vw;
-      padding-right: 10vw;
+      padding-left: 2rem;
+      padding-right: 2rem;
       .gform_wrapper{
         margin:0;
+        input[type="text"],
+        input[type="password"],
+        input[type="color"],
+        input[type="date"],
+        input[type="datetime"],
+        input[type="datetime-local"],
+        input[type="email"],
+        input[type="month"],
+        input[type="number"],
+        input[type="range"],
+        input[type="search"],
+        input[type="tel"],
+        input[type="time"],
+        input[type="url"],
+        input[type="week"],
+        select,
+        textarea  {
+          border-width: 0;
+        }
       }
       h3,h3.gform_title{
         color: @white;
@@ -117,6 +136,36 @@ nav.homepage-top{
          .button(@white,@white);
          font-size: 14px;
        }
+       
+       font-size: 2.1rem;
+       h3{
+          background-repeat: no-repeat;
+          background-position: center left;
+          background-size: 50px auto;
+          background-image:url(../img/icon-calculator.png);
+          padding-left: 55px;
+          color: fade(@white,50%);
+          font-size: 3rem;
+          line-height: 1;
+          max-width: 280px;
+          margin-top: 5rem;
+          margin-left: auto;
+          margin-right: auto;
+          span{
+            font-weight: 700;
+            font-size: 3.8rem;
+            color: fade(@white,100%);
+          }
+      }
+      .button{
+        .button(@ltgreen,@green);
+        background-color: @ltgreen;
+        font-size: 14px;
+        max-width: 280px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
      }
     }
   }
@@ -168,6 +217,8 @@ nav.homepage-top{
       border-top: 6px solid @green;
       border-bottom: 0 solid @green;
       .section-content{
+       padding-left: 10vw;
+       padding-right: 10vw;
        &.column-1{
          background-color: @offwhite;
        }
@@ -187,7 +238,6 @@ nav.homepage-top{
            }
          }
          .button{
-           .button(@white,@white);
            font-size: 14px;
          }
        }

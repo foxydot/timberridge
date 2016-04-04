@@ -31,4 +31,16 @@ jQuery(document).ready(function($) {
     } else {
         $("nav.nav-primary").sticky({});
     }
+    //add element to page
+    $('article.first-child').prepend('<div class="text-sizer"><div>Text Size <i class="minus fa fa-minus"></i><i class="plus fa fa-plus"></i></div></div>');
+    $('.text-sizer').sticky({topSpacing:210});
+    var size = parseInt($('html').css('font-size'));
+    $('.text-sizer .plus').click(function(){
+        size = size*1.05;
+        $('html').css('font-size',size + 'px');
+    });
+    $('.text-sizer .minus').click(function(){
+        size = size*0.95;
+        $('html').css('font-size',size + 'px');
+    });
 });

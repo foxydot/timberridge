@@ -4,8 +4,7 @@ jQuery(document).ready(function($) {
     var cols = 12/numwidgets;
     $('#homepage-widgets section.widget').addClass('col-sm-'+cols);
     $('#homepage-widgets section.widget').addClass('col-xs-12');
-    
-    
+        
     var nav = $('nav.nav-primary');
     if($( window ).width() > 480){
         if ($(this).scrollTop() > 230) {

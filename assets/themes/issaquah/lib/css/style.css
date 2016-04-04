@@ -6514,7 +6514,7 @@ input[type="week"],
 select,
 textarea {
   background-color: #FFF;
-  border: 0px solid #E3E2E0;
+  border: 1px solid #D4D4D6;
   color: #404040;
   font-size: 14px;
   font-size: 1.4rem;
@@ -8411,6 +8411,25 @@ Site Footer
   background-color: #BDBBA2;
   font-size: 14px;
   width: 98%;
+}
+.text-sizer {
+  display: block;
+  z-index: 900;
+  color: #BDBBA2;
+  text-align: right;
+}
+.text-sizer div {
+  background: rgba(255, 255, 255, 0.8);
+  width: auto;
+  padding: 0.5em;
+  float: right;
+}
+.text-sizer div i {
+  margin-left: 0.5em;
+  padding: 0.5em;
+  background: #BDBBA2;
+  color: #FFF;
+  cursor: pointer;
 }
 .msd-fa.block,
 .msd-icon.block {
