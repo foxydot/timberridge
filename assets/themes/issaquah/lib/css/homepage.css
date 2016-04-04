@@ -165,7 +165,8 @@ nav.homepage-top .menu li.lifestyle {
   background-color: #384B45;
   color: #FFF;
 }
-.sectioned-page-wrapper .section.section-forms .section-content.column-2 .icon-calculator:before {
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .icon-calculator:before,
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .fa-calculator:before {
   margin: 2rem 0;
   content: '';
   height: 160px;
