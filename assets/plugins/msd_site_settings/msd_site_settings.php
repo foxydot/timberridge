@@ -37,7 +37,7 @@ class MSDSocial{
         if(!is_admin()){
     		wp_enqueue_style('msd-social-style',$this->the_url.'lib/css/style.css');
     		wp_enqueue_style('msd-social-style-'.$this->icon_size,$this->the_url.'lib/css/style'.$this->icon_size.'.css');
-            wp_enqueue_style('font-awesome-style','//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+            wp_enqueue_style('font-awesome-style','//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
         }
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_scripts') );
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_styles') );
@@ -302,7 +302,6 @@ function social_media($atts = array()){
     extract( shortcode_atts( array(
             ), $atts ) );
     
-    $ret = '<div id="social-media" class="social-media">';
     if(get_option('msdsocial_facebook_link')!=""){
         $ret .= '<a href="'.get_option('msdsocial_facebook_link').'" class="fa fa-facebook" title="Join Us on Facebook!" target="_blank"></a>';
     }    
@@ -348,7 +347,8 @@ function social_media($atts = array()){
     if(get_option('msdsocial_show_feed')!=""){
         $ret .= '<a href="'.get_bloginfo('rss2_url').'" class="fa fa-rss" title="RSS Feed" target="_blank"></a>';
     }
-    $ret .= '</div>';
+    $ret = apply_filters('msdlab_social_icons_output',$ret);
+    $ret = '<div id="social-media" class="social-media">'.$ret.'</div>';
     return $ret;
 }
 
