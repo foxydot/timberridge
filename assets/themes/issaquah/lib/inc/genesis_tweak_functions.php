@@ -247,7 +247,7 @@ function msdlab_maybe_move_title(){
     global $post;
     $template_file = get_post_meta($post->ID,'_wp_page_template',TRUE);
     if(is_page()){
-        remove_action('genesis_entry_header','genesis_do_post_title'); //move the title out of the content area
+        //remove_action('genesis_entry_header','genesis_do_post_title'); //move the title out of the content area
         add_action('msdlab_title_area','msdlab_do_section_title');
         add_action('genesis_after_header','msdlab_do_title_area');
     }
@@ -272,13 +272,13 @@ function msdlab_do_title_area(){
 function msdlab_do_section_title(){
     if(is_front_page()){
         msdlab_do_homepage_top_menu();  
-        add_action('genesis_entry_header','genesis_do_post_title',5);
+        //add_action('genesis_entry_header','genesis_do_post_title',5);
     } elseif(is_page()){
         global $post;
         $myid = $post->ID;
         $lvl = 1;
         if(get_section_title()!=$post->post_title){
-            add_action('genesis_entry_header','genesis_do_post_title',5);
+            //add_action('genesis_entry_header','genesis_do_post_title',5);
             $lvl = 2;
             $myid = get_topmost_parent($post->ID);
         }

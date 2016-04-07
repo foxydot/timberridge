@@ -111,6 +111,12 @@ function get_section_title(){
     return $section;
 }
 
+function get_section_title_custom(){
+    global $post;
+    $section = get_post_meta('$post->ID');
+    return $section;
+}
+
 function get_topmost_parent($post_id){
 	$parent_id = get_post($post_id)->post_parent;
 	if($parent_id == 0){
