@@ -113,7 +113,7 @@ function get_section_title(){
 
 function get_section_title_custom(){
     global $post;
-    $section = get_post_meta('$post->ID');
+    $section = get_post_meta($post->ID,'_msdlab_subtitle',true);
     return $section;
 }
 

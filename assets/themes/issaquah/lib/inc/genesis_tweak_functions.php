@@ -288,7 +288,7 @@ function msdlab_do_section_title(){
         print '<div class="gradient">';
         print '<div class="wrap">';
         print '<h'.$lvl.' class="section-title">';
-        print get_section_title();
+        print get_section_title_custom();
         print '</h'.$lvl.'>';
         print '</div>';
         print '</div>';

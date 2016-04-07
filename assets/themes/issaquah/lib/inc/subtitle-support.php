@@ -13,8 +13,8 @@ function add_custom_metaboxes(){
 	global $subtitle_metabox;
     $subtitle_metabox = new WPAlchemy_MetaBox(array
     (
-        'id' => '_section_header',
-        'title' => 'Section Header',
+        'id' => '_subtitle',
+        'title' => 'Menu Tree Header',
         'types' => array('post','page'),
         'context' => 'normal', // same as above, defaults to "normal"
         'priority' => 'high', // same as above, defaults to "high"
