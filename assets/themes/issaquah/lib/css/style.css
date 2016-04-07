@@ -8358,7 +8358,7 @@ Site Footer
   font-size: 80px;
   font-size: 8rem;
   line-height: 1;
-  padding: 1em;
+  padding: 1em 0;
   color: #FFF;
 }
 .section-title a,
@@ -8419,7 +8419,7 @@ Site Footer
 }
 .text-sizer {
   display: block;
-  z-index: 900;
+  z-index: 90;
   color: #BDBBA2;
   text-align: right;
 }
@@ -8461,6 +8461,21 @@ Site Footer
 .msd-fa.circle:before,
 .msd-icon.circle:before {
   border-radius: 50%;
+}
+.su-accordion > p {
+  display: none;
+}
+.su-accordion .su-spoiler .su-spoiler-title {
+  font-family: "Raleway", "Helvetica Neue", "Trebuchet MS", Calibri, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  font-size: 1.8rem;
+  line-height: 1.625;
+  color: #384B45;
+}
+.su-accordion .su-spoiler .su-spoiler-title .su-spoiler-icon {
+  font-size: 1.8rem;
+  line-height: 1.8;
 }
 .nav-responsive ul,
 .nav-responsive li,

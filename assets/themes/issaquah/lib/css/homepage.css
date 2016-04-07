@@ -183,9 +183,20 @@ nav.homepage-top .menu li.lifestyle {
 .sectioned-page-wrapper .section.section-forms .section-content.column-2 {
   background-color: #384B45;
   color: #FFF;
+}
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box {
+  margin: 50px auto;
+  width: auto;
+  display: inline-block;
+  border: 1px solid #E3E2E0;
+  border-radius: 12px;
+  padding: 2rem;
   font-size: 2.1rem;
 }
-.sectioned-page-wrapper .section.section-forms .section-content.column-2 .icon-calculator:before {
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box h3 {
+  margin-top: 0;
+}
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box .icon-calculator:before {
   margin: 2rem 0;
   content: '';
   height: 160px;
@@ -195,7 +206,7 @@ nav.homepage-top .menu li.lifestyle {
   background-size: 70px auto;
   background-image: url(../img/icon-calculator.png);
 }
-.sectioned-page-wrapper .section.section-forms .section-content.column-2 .button {
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box .button {
   padding: 6px 24px;
   font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;
@@ -214,7 +225,10 @@ nav.homepage-top .menu li.lifestyle {
   border-radius: 6px;
   font-size: 14px;
 }
-.sectioned-page-wrapper .section.section-forms .section-content.column-2 h3 {
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box p {
+  margin: 0;
+}
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box h3 {
   background-repeat: no-repeat;
   background-position: center left;
   background-size: 50px auto;
@@ -224,16 +238,15 @@ nav.homepage-top .menu li.lifestyle {
   font-size: 3rem;
   line-height: 1;
   max-width: 280px;
-  margin-top: 5rem;
   margin-left: auto;
   margin-right: auto;
 }
-.sectioned-page-wrapper .section.section-forms .section-content.column-2 h3 span {
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box h3 span {
   font-weight: 700;
   font-size: 3.8rem;
   color: #ffffff;
 }
-.sectioned-page-wrapper .section.section-forms .section-content.column-2 .button {
+.sectioned-page-wrapper .section.section-forms .section-content.column-2 .calculator-box .button {
   padding: 6px 24px;
   font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
   font-weight: 400;

@@ -27,7 +27,7 @@
   background: fade(@white,0%);
   display: block;
   .script(8);
-  padding: 1em;
+  padding: 1em 0;
   color: @white;
   a, a:visited {
     color: @white;
@@ -75,7 +75,7 @@
 
 .text-sizer{
   display: block;
-  z-index: 900;
+  z-index: 90;
   color: @ltgreen;
   text-align: right;
   div{
@@ -116,6 +116,23 @@
   &.circle{
     &:before{
       border-radius: 50%;
+    }
+  }
+}
+
+//accoridion
+.su-accordion{
+  >p{
+    display: none;
+  }
+  .su-spoiler{
+    .su-spoiler-title{
+      .custombody(1.8);
+      color: @green;
+      .su-spoiler-icon{
+        font-size: 1.8rem;
+        line-height: 1.8;
+      }
     }
   }
 }

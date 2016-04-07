@@ -120,51 +120,62 @@ nav.homepage-top{
      &.column-2{
        background-color: @green;
        color: @white;
-       .icon-calculator{
-         &:before{
-           margin: 2rem 0;
-           content: '';
-           height: 160px;
-           width: 160px;
-          background-repeat: no-repeat;
-          background-position: center center;
-          background-size: 70px auto;
-           background-image:url(../img/icon-calculator.png);
+       .calculator-box{
+         margin: 50px auto;
+         width: auto;
+         display: inline-block;
+         border: 1px solid @offwhite;
+         border-radius: 12px;
+        font-size: 2.1rem;
+        padding: 2rem;
+        h3{margin-top: 0;}
+         .icon-calculator{
+           &:before{
+             margin: 2rem 0;
+             content: '';
+             height: 160px;
+             width: 160px;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: 70px auto;
+             background-image:url(../img/icon-calculator.png);
+           }
          }
-       }
-       .button{
-         .button(@white,@white);
-         font-size: 14px;
-       }
-       
-       font-size: 2.1rem;
-       h3{
-          background-repeat: no-repeat;
-          background-position: center left;
-          background-size: 50px auto;
-          background-image:url(../img/icon-calculator.png);
-          padding-left: 55px;
-          color: fade(@white,50%);
-          font-size: 3rem;
-          line-height: 1;
+         .button{
+           .button(@white,@white);
+           font-size: 14px;
+         }
+         p{
+           margin: 0;
+         }
+         font-size: 2.1rem;
+         h3{
+            background-repeat: no-repeat;
+            background-position: center left;
+            background-size: 50px auto;
+            background-image:url(../img/icon-calculator.png);
+            padding-left: 55px;
+            color: fade(@white,50%);
+            font-size: 3rem;
+            line-height: 1;
+            max-width: 280px;
+            margin-left: auto;
+            margin-right: auto;
+            span{
+              font-weight: 700;
+              font-size: 3.8rem;
+              color: fade(@white,100%);
+            }
+        }
+        .button{
+          .button(@ltgreen,@green);
+          background-color: @ltgreen;
+          font-size: 14px;
           max-width: 280px;
-          margin-top: 5rem;
+          width: 100%;
           margin-left: auto;
           margin-right: auto;
-          span{
-            font-weight: 700;
-            font-size: 3.8rem;
-            color: fade(@white,100%);
-          }
-      }
-      .button{
-        .button(@ltgreen,@green);
-        background-color: @ltgreen;
-        font-size: 14px;
-        max-width: 280px;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
+        }
       }
      }
     }
