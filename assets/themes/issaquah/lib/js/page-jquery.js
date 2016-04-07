@@ -47,4 +47,10 @@ jQuery(document).ready(function($) {
             });
         }
     });
+    
+    $(window).scroll(function () {
+        $(".sidebar-content .content-sidebar-wrap main.content,.sidebar-content .content-sidebar-wrap aside.sidebar-primary").equalHeightColumns(
+            {checkHeight: 'innerHeight'}
+        );
+    });
 });
