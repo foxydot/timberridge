@@ -276,12 +276,12 @@ function msdlab_do_section_title(){
     } elseif(is_page()){
         global $post;
         $myid = $post->ID;
-        $lvl = 1;
-        if(get_section_title()!=$post->post_title){
+        $lvl = 2;
+        //if(get_section_title()!=$post->post_title){
             //add_action('genesis_entry_header','genesis_do_post_title',5);
-            $lvl = 2;
-            $myid = get_topmost_parent($post->ID);
-        }
+            //$lvl = 2;
+            //$myid = get_topmost_parent($post->ID);
+        //}
         $background = strlen(msdlab_get_thumbnail_url($myid,'full'))>0?' style="background-image:url('.msdlab_get_thumbnail_url($myid,'full').')"':'';
         print '<div class="banner clearfix"'.$background.'>';
         print '<div class="texturize">';
