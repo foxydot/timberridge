@@ -111,10 +111,8 @@ function get_section_title(){
     return $section;
 }
 
-function get_section_title_custom(){
-    global $post;
-    $section = get_post_meta($post->ID,'_msdlab_subtitle',true);
-    return $section;
+function get_menu_tree_header($id){
+    return get_post_meta($id,'_msdlab_subtitle',true);
 }
 
 function get_topmost_parent($post_id){

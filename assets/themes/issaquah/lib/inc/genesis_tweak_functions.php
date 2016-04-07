@@ -277,18 +277,18 @@ function msdlab_do_section_title(){
         global $post;
         $myid = $post->ID;
         $lvl = 2;
-        //if(get_section_title()!=$post->post_title){
+        if(get_section_title()!=$post->post_title){
             //add_action('genesis_entry_header','genesis_do_post_title',5);
             //$lvl = 2;
-            //$myid = get_topmost_parent($post->ID);
-        //}
+            $myid = get_topmost_parent($post->ID);
+        }
         $background = strlen(msdlab_get_thumbnail_url($myid,'full'))>0?' style="background-image:url('.msdlab_get_thumbnail_url($myid,'full').')"':'';
         print '<div class="banner clearfix"'.$background.'>';
         print '<div class="texturize">';
         print '<div class="gradient">';
         print '<div class="wrap">';
         print '<h'.$lvl.' class="section-title">';
-        print get_section_title_custom();
+        print get_menu_tree_header($myid);
         print '</h'.$lvl.'>';
         print '</div>';
         print '</div>';
