@@ -33,7 +33,7 @@ jQuery(document).ready(function($) {
     }
     //add element to page
     $('article.first-child').prepend('<div class="text-sizer"><div>Text Size <i class="minus fa fa-minus"></i><i class="plus fa fa-plus"></i></div></div>');
-    $('.text-sizer').sticky({topSpacing:210});
+    //$('.text-sizer').sticky({topSpacing:210});
     var size = parseInt($('html').css('font-size'));
     $('.text-sizer .plus').click(function(){
         size = size*1.05;
