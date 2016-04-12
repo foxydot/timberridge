@@ -22,7 +22,7 @@ class MSDSectionedPage{
         /**
          * Initializes the plugin by setting filters and administration functions.
          */
-   function __construct() {      
+   function __construct() {    
         }
         
     function add_metaboxes(){
@@ -237,69 +237,23 @@ class MSDSectionedPage{
             $template_file = get_post_meta($postid,'_wp_page_template',TRUE);
             if($template_file == 'page-sectioned.php'){
             ?><script type="text/javascript">
-                jQuery(function($){
-                    $("#wpa_loop-sections").sortable({
-                        change: function(){
-                            $("#warning").show();
-                        }
-                    });
-                    $("#postdivrich").after($("#_page_sectioned_metabox"));
-                    $(".colorpicker").spectrum({
-                        preferredFormat: "rgb",
-                        showAlpha: true,
-                        showInput: true,
-                        allowEmpty: true,
-                    });
-                    $('.cols-2').each(function(){
-                        var layout = $(this).parents('.wpa_group-sections').find($('select.layout')).val();
-                        if(layout == 'two-col'){
-                            $(this).show();
-                        }
-                    });
-                    $('.cols-3').each(function(){
-                        var layout = $(this).parents('.wpa_group-sections').find($('select.layout')).val();
-                        if(layout == 'three-col'){
-                            $(this).show();
-                        }
-                    });
-                    $('.cols-4').each(function(){
-                        var layout = $(this).parents('.wpa_group-sections').find($('select.layout')).val();
-                        if(layout == 'four-col'){
-                            $(this).show();
-                        }
-                    });
-                    $('.range-value').html(function(){
-                        var section = $(this).parents('.cell');
-                        var range = section.find('.input-range').val();
-                        $(this).html(range + '/12 columns');
-                    });
-                    $('select.layout').change(function(){
-                        var layout = $(this).val();
-                        var section = $(this).parents('.wpa_group-sections');
-                        section.find($('.cols-2, .cols-3, .cols-4')).hide();
-                        if(layout == 'two-col'){
-                            section.find($('.cols-2')).show();
-                        }
-                        if(layout == 'three-col'){
-                            section.find($('.cols-3')).show();
-                        }
-                        if(layout == 'four-col'){
-                            section.find($('.cols-4')).show();
-                        }
-                    });
-                    $('.input-range').change(function(){
-                        var range = $(this).val();
-                        var section = $(this).parents('.cell');
-                        section.find($('.range-value')).html(range + '/12 columns');
-                    });
-                });
+                
                 </script><?php
             }
         }
         
         function enqueue_admin(){
-            wp_enqueue_script('spectrum',WP_PLUGIN_URL.'/msd-specialty-pages/lib/js/spectrum.js',array('jquery'));
-            wp_enqueue_style('sectioned-admin',WP_PLUGIN_URL.'/msd-specialty-pages/lib/css/sectioned.css');
-            wp_enqueue_style('spectrum',WP_PLUGIN_URL.'/msd-specialty-pages/lib/css/spectrum.css');
+            $postid = $_GET['post'];
+            $template_file = get_post_meta($postid,'_wp_page_template',TRUE);
+            if($template_file == 'page-sectioned.php'){
+                //js
+                wp_enqueue_script('spectrum',WP_PLUGIN_URL.'/msd-specialty-pages/lib/js/spectrum.js',array('jquery'));
+                wp_enqueue_script('jquery-ui-core');
+                wp_enqueue_script('jquery-ui-sortable');
+                wp_enqueue_script('sectioned-admin',WP_PLUGIN_URL.'/msd-specialty-pages/lib/js/sectioned-input.js',array('jquery'));
+                //css
+                wp_enqueue_style('spectrum',WP_PLUGIN_URL.'/msd-specialty-pages/lib/css/spectrum.css');
+                wp_enqueue_style('sectioned-admin',WP_PLUGIN_URL.'/msd-specialty-pages/lib/css/sectioned.css');
+            }
         }
 }
