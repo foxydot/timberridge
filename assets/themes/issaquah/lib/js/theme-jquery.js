@@ -21,9 +21,11 @@ jQuery(document).ready(function($) {
 	});
 	$('form.gplaceholder .gfield_label').each(function(){
 	    var placeholder = $(this).html();
-	    $(this).addClass('hidden');
-        $(this).next('.ginput_container').find('input').attr('placeholder',placeholder.replace(/(<([^>]+)>)/ig,""));
-        $(this).next('.ginput_container').find('select option.first-child').html(placeholder.replace(/(<([^>]+)>)/ig,""));
+	    if(!$(this).next('.ginput_container').hasClass('ginput_container_radio')){
+    	    $(this).addClass('hidden');
+            $(this).next('.ginput_container').find('input').attr('placeholder',placeholder.replace(/(<([^>]+)>)/ig,""));
+            $(this).next('.ginput_container').find('select option.first-child').html(placeholder.replace(/(<([^>]+)>)/ig,""));
+        }
 	});
 	if($( window ).width() > 480){
         $(".site-header").sticky();
