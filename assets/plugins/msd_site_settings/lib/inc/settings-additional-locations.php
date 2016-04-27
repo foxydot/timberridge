@@ -5,7 +5,7 @@
         <option value="'.$n.'"'.$selected.'>'.$n.'</option>';
     }
 ?>
-          <h2>Additional Locations</h2>
+          <h2><?php print apply_filters('msdlab_social_additional_panel_title','Additional Locations'); ?></h2>
           <p>Show <select name="num_locations" id="num_locations"><?php print $numbers_select; ?></select> Additional Location(s)</p>
           <?php 
             $additional_locations = get_option(msdsocial_adtl_locations);

@@ -2,7 +2,7 @@
 /*
 Plugin Name: MSD Site Settings
 Description: Provides settings panel for several social/address options and widgets/shortcodes/functions for display.
-Version: 0.9.2
+Version: 0.9.4
 Author: Catherine M OBrien Sandrick (CMOS)
 Author URI: http://msdlab.com/biological-assets/catherine-obrien-sandrick/
 GitHub Plugin URI: https://github.com/msdlab/msd_site_settings
@@ -42,6 +42,8 @@ class MSDSocial{
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_scripts') );
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_styles') );
         
+        add_action('wp_head',array(&$this,'setup_notification_bar'));
+        
         add_shortcode('msd-address',array(&$this,'get_address'));
         add_shortcode('msd-additional-locations',array(&$this,'get_additional_locations'));
 		add_shortcode('msd-bizname',array(&$this,'get_bizname'));
@@ -56,6 +58,9 @@ class MSDSocial{
             if($current_screen->id == 'settings_page_msdsocial-options'){
                 wp_enqueue_script('bootstrap-jquery','//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',array('jquery'));
                 wp_enqueue_script('timepicker-jquery',$this->the_url.'lib/js/jquery.timepicker.min.js',array('jquery'));
+                wp_enqueue_script( 'jquery-ui-datepicker' );
+                wp_enqueue_script('msdsocial-jquery',$this->the_url.'lib/js/plugin-jquery.js',array('jquery'));
+                
             }
         }
         
@@ -67,6 +72,7 @@ class MSDSocial{
                 wp_register_style('timepicker-style',$this->the_url.'lib/css/jquery.timepicker.css');
                 wp_enqueue_style('font-awesome-style');
                 wp_enqueue_style('timepicker-style');
+                wp_enqueue_style('jqueryui-smoothness','//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css');
             }
         }  
 
@@ -393,6 +399,82 @@ function get_hours_deux(){ ///why are there two of these?
             $prev['hours'] = $hours[$day];
         }
         return '<div class="business-hours">'.$ret.'</div>';
+}
+
+function notification_bar_in_date_window($date = '',$convert = TRUE){
+    if(empty($date)){
+        $convert = FALSE;
+        $date = time();
+    }
+    if($convert){
+        $date = strtotime($date);
+    }
+    $start = strtotime(get_option('msdsocial_notification_start_datetime'));
+    $end = strtotime(get_option('msdsocial_notification_end_datetime'));
+    if(($date >= $start && $date <= $end) || ($date >= $start && $end == '') || ($start == '' && $end == '')){
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+function setup_notification_bar(){
+    if(get_option('msdsocial_notification_content') == ''){
+        return false;
+    }
+    
+    $position = get_option('msdsocial_notification_position');
+    if($position<10){
+        return false;
+    }
+    if($this->notification_bar_in_date_window()){
+        $genesis = function_exists('genesis')?1:0;
+        switch($position){
+            case 10:
+                if($genesis){
+                    add_action('genesis_before_header',array(&$this,'print_notification_bar'),1);
+                } else {
+                    $this->print_notification_bar();
+                }
+                break;
+            case 20:
+                if($genesis){
+                    add_action('genesis_after_header',array(&$this,'print_notification_bar'),99);
+                } else {
+                    add_action('loop_start',array(&$this,'print_notification_bar'),1);
+                }
+                break;
+            case 30:
+                if($genesis){
+                    add_action('genesis_before_footer',array(&$this,'print_notification_bar'),1);
+                } else {
+                    add_action('wp_footer',array(&$this,'print_notification_bar'),1);
+                }
+                break;
+            case 40:
+                if($genesis){
+                    add_action('genesis_after_footer',array(&$this,'print_notification_bar'),99);
+                } else {
+                    add_action('wp_footer',array(&$this,'print_notification_bar'),99);
+                }
+                break;
+            case 50:
+                global $notification_bar_html;
+                $notification_bar_html = $this->get_notification_bar();
+                return true;
+                break;
+            default:
+                return false;
+                break;
+        }
+    }
+}
+
+function print_notification_bar(){
+    print $this->get_notification_bar();
+}
+function get_notification_bar(){
+    $content = apply_filters('the_content',get_option('msdsocial_notification_content'));
+    return '<div class="notification-bar"><div class="wrap">' . $content . '</div></div>';
 }
 
 function requireDir($dir){

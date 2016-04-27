@@ -8477,6 +8477,16 @@ Site Footer
   font-size: 1.8rem;
   line-height: 1.8;
 }
+.notification-bar {
+  background: #682122;
+  text-align: center;
+  color: #FFF;
+  padding: 0.5em 0;
+  z-index: 200;
+}
+.notification-bar p {
+  margin: 0;
+}
 .nav-responsive ul,
 .nav-responsive li,
 .nav-responsive li a {
