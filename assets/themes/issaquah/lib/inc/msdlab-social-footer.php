@@ -1,5 +1,15 @@
 <?php
+
 /**
+ * Place the notification bar
+ */
+ add_action('genesis_after_header','custom_notification_bar');
+function custom_notification_bar(){
+    global $notification_bar_html;
+    print $notification_bar_html;
+}
+
+ /**
  * Footer replacement with MSDSocial support
  */
 function msdlab_do_social_footer(){
