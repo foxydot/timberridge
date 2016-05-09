@@ -7271,6 +7271,7 @@ Site Navigation
   background-color: #BDBBA2;
   padding: 0 2rem;
   width: 100%;
+  position: relative;
 }
 .nav-primary li.menu-item .sub-menu li.menu-item a {
   background-color: transparent;
