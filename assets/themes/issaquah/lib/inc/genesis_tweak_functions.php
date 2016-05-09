@@ -200,7 +200,9 @@ function msdlab_do_nav() {
 function msdlab_add_extra_theme_sidebars(){
     //* Remove the header right widget area
     //unregister_sidebar( 'header-right' );
-    genesis_register_sidebar(array(
+    // REmove seondary sidebar
+    unregister_sidebar( 'sidebar-alt' );
+    /*genesis_register_sidebar(array(
     'name' => 'Pre-header Sidebar',
     'description' => 'Widget above the logo/nav header',
     'id' => 'pre-header'
@@ -209,7 +211,7 @@ function msdlab_add_extra_theme_sidebars(){
     'name' => 'Page Footer Widget',
     'description' => 'Widget on page footer',
     'id' => 'msdlab_page_footer'
-            ));
+            ));*/
     genesis_register_sidebar(array(
     'name' => 'Blog Sidebar',
     'description' => 'Widgets on the Blog Pages',

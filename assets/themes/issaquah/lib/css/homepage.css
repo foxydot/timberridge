@@ -71,6 +71,18 @@
   background-size: cover;
   margin-bottom: -140px;
 }
+.pre-header .widget-area {
+  color: #FFF;
+  text-shadow: 0 0 4px #2D2D2D;
+  position: relative;
+  top: -80px;
+  font-family: "Raleway", "Helvetica Neue", "Trebuchet MS", Calibri, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  font-size: 1.4rem;
+  line-height: 1.625;
+  line-height: 1.8;
+}
 .pre-header .logo {
   height: 170px;
   width: 100%;
@@ -81,11 +93,11 @@
 }
 .site-header {
   opacity: 0;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 nav.homepage-top .menu li {
   background-repeat: no-repeat;
