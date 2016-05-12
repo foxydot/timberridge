@@ -28,9 +28,11 @@
   .genesis-nav-menu{
   }
   .nav-primary{
+    position: relative;
     li.menu-item{
       padding: 0 1vw;
       font-size: 1.2vw;
+      z-index: 800;
       a{
         padding: 1.2vw 1vw;
         border-bottom-width: 0.4vw;
@@ -242,7 +244,17 @@
   .tablepress td, .tablepress th {display: inline-block;}
 } 
 
-@media only screen and (max-width : 319px) {  
+@media only screen and (max-width : 322px) {  
   /* Enter Your Custom Styles Here */ 
-
+  
+  .footer-widgets{
+    .widget.widget_nav_menu ul.menu {
+      -moz-column-count: 1;
+      -webkit-column-count: 1;
+      column-count: 1;
+    }
+  }
+  .site-footer .wrap div.icons i.logo-lcs{
+    top: 2em;
+  }
 }

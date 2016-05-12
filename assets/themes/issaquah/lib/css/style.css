@@ -7246,7 +7246,7 @@ Site Navigation
   font-size: 1.4rem;
   line-height: 1.625;
   background: #BDBBA2;
-  z-index: 300;
+  z-index: 800;
 }
 .nav-primary li.menu-item {
   padding: 0 1.6rem;
@@ -8507,9 +8507,13 @@ Site Footer
   div.wrap {
     padding: 0 15px;
   }
+  .nav-primary {
+    position: relative;
+  }
   .nav-primary li.menu-item {
     padding: 0 1vw;
     font-size: 1.2vw;
+    z-index: 800;
   }
   .nav-primary li.menu-item a {
     padding: 1.2vw 1vw;
@@ -8688,6 +8692,14 @@ Site Footer
     display: inline-block;
   }
 }
-@media only screen and (max-width: 319px) {
+@media only screen and (max-width: 322px) {
   /* Enter Your Custom Styles Here */
+  .footer-widgets .widget.widget_nav_menu ul.menu {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+  .site-footer .wrap div.icons i.logo-lcs {
+    top: 2em;
+  }
 }
