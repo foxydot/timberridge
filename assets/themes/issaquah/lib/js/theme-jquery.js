@@ -46,4 +46,12 @@ jQuery(document).ready(function($) {
         size = size*0.95;
         $('html').css('font-size',size + 'px');
     });
+    
+    $('a').not('[href*="mailto:"]').each(function () {
+        var isInternalLink = new RegExp('/' + window.location.host + '/');
+        if ( ! isInternalLink.test(this.href) ) {
+            $(this).attr('target', '_blank');
+        }
+    });
+
 });
