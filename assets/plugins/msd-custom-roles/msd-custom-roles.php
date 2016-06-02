@@ -109,9 +109,13 @@ if (!class_exists('MSDCustomRoles')) {
             $this->events_capabilites('marketing',1,1,1);
             $this->news_capabilites('marketing');
             
+            $this->news_capabilites('administrator');
+            
             remove_role('human_resources');
             add_role( 'human_resources', 'Human Resources', $capabilities );
             $this->jobs_capabilities('human_resources');
+            
+            
         }
         
         function restrict_pages(){
