@@ -130,7 +130,7 @@
                     <?php 
                     $mb->the_field('column-'.$i.'-area-width');
                     ?>
-                    <input type="text" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" />
+                    <input type="text" class="small" name="<?php $mb->the_name(); ?>" value="<?php $mb->the_value(); ?>" /> How many columns out of 12?
                 </div>
                 <label>Column <?php print $i; ?> Content</label>
                 <div class="input_container">

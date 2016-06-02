@@ -134,6 +134,15 @@ jQuery(function($){
           .collapsible({
             header: ".section_handle"
         });
+        
+        $('#wpa_loop-sections .wpa_group:nth-last-child(2) .ui-toggle-btn').each(function(){
+            var toggled = $(this).next('.switchable');
+            if($(this).find('input[type=checkbox]').is(':checked')){
+                toggled.slideDown(500);
+            } else {
+                toggled.slideUp(500);
+            }
+        });
     });
     }
 });

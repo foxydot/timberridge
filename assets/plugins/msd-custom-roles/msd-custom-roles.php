@@ -103,14 +103,15 @@ if (!class_exists('MSDCustomRoles')) {
         function create_roles(){
             $capabilities = array(
                 'read' => true,
-                'edit_pages' => true,
-                'edit_others_pages' => true,
-                'edit_published_pages' => true,
             );
             remove_role('marketing');
-            remove_role('human_resources');
             add_role( 'marketing', 'Marketing', $capabilities );
+            $this->events_capabilites('marketing',1,1,1);
+            $this->news_capabilites('marketing');
+            
+            remove_role('human_resources');
             add_role( 'human_resources', 'Human Resources', $capabilities );
+            $this->jobs_capabilities('human_resources');
         }
         
         function restrict_pages(){
@@ -135,6 +136,124 @@ if (!class_exists('MSDCustomRoles')) {
             }
         }
 
+        function events_capabilites($role,$events = false,$venue = false,$organizers = false){
+            if(class_exists('Tribe__Events__Main')){
+                $role = get_role($role);
+                $event_caps = array(
+                'edit_tribe_event',
+                'read_tribe_event',
+                'delete_tribe_event',
+                'delete_tribe_events',
+                'edit_tribe_events',
+                'edit_others_tribe_events',
+                'delete_others_tribe_events',
+                'publish_tribe_events',
+                'edit_published_tribe_events',
+                'delete_published_tribe_events',
+                'delete_private_tribe_events',
+                'edit_private_tribe_events',
+                'read_private_tribe_events',
+                );
+                $venue_caps = array(
+                'edit_tribe_venue',
+                'read_tribe_venue',
+                'delete_tribe_venue',
+                'delete_tribe_venues',
+                'edit_tribe_venues',
+                'edit_others_tribe_venues',
+                'delete_others_tribe_venues',
+                'publish_tribe_venues',
+                'edit_published_tribe_venues',
+                'delete_published_tribe_venues',
+                'delete_private_tribe_venues',
+                'edit_private_tribe_venues',
+                'read_private_tribe_venues',
+                );
+                $organizer_caps = array(
+                'edit_tribe_organizer',
+                'read_tribe_organizer',
+                'delete_tribe_organizer',
+                'delete_tribe_organizers',
+                'edit_tribe_organizers',
+                'edit_others_tribe_organizers',
+                'delete_others_tribe_organizers',
+                'publish_tribe_organizers',
+                'edit_published_tribe_organizers',
+                'delete_published_tribe_organizers',
+                'delete_private_tribe_organizers',
+                'edit_private_tribe_organizers',
+                'read_private_tribe_organizers',
+                );
+                if($events){
+                    foreach($event_caps AS $ec){
+                        $role->add_cap($ec);
+                    }
+                }
+                if($venue){
+                    foreach($venue_caps AS $vc){
+                        $role->add_cap($vc);
+                    }
+                }
+                if($organizers){
+                    foreach($organizer_caps AS $oc){
+                        $role->add_cap($oc);
+                    }
+                }
+            }
+        }
+
+        function jobs_capabilities($role){
+            if(class_exists('WP_Job_Manager')){
+                $role = get_role($role);
+                $job_caps = array(
+                "edit_job_listing",
+                "read_job_listing",
+                "delete_job_listing",
+                "edit_job_listings",
+                "edit_others_job_listings",
+                "publish_job_listings",
+                "read_private_job_listings",
+                "delete_job_listings",
+                "delete_private_job_listings",
+                "delete_published_job_listings",
+                "delete_others_job_listings",
+                "edit_private_job_listings",
+                "edit_published_job_listings",
+                "manage_job_listing_terms",
+                "edit_job_listing_terms",
+                "delete_job_listing_terms",
+                "assign_job_listing_terms",
+                'manage_job_listings',
+                );
+                foreach($job_caps AS $jc){
+                    $role->add_cap($jc);
+                }
+            }
+        }
+
+        function news_capabilites($role){
+            if(class_exists('MSDNewsCPT')){
+                $role = get_role($role);
+                $news_caps = array(
+                'edit_news',
+                'read_news',
+                'delete_news',
+                'delete_news',
+                'edit_news',
+                'edit_others_news',
+                'delete_others_news',
+                'publish_news',
+                'edit_published_news',
+                'delete_published_news',
+                'delete_private_news',
+                'edit_private_news',
+                'read_private_news',
+                );
+                foreach($news_caps AS $nc){
+                    $role->add_cap($nc);
+                }
+            }
+        }
         /**
          * @desc Loads the options. Responsible for handling upgrades and default option values.
          * @return array

@@ -6971,6 +6971,13 @@ img#wpstats {
 .gfield table.gsurvey-likert tbody tr td.gsurvey-likert-choice-label {
   background: none;
 }
+.entry-content ul.news-items {
+  list-style: none outside none;
+  margin-left: 0;
+}
+.entry-content ul.news-items li {
+  list-style: none outside none;
+}
 /*
 Site Header
 ---------------------------------------------------------------------------------------------------- */

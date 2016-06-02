@@ -62,24 +62,24 @@ class MSDSectionedPage{
                 $parallax_ids[] = $slug;
             }
         }
-        $wrapped_title = trim($title) != ''?'<div class="section-title">
+        $wrapped_title = trim($title) != ''?apply_filters('msdlab_sectioned_page_output_title','<div class="section-title">
             <h3 class="wrap">
                 '.$title.'
             </h3>
-        </div>':'';
-        $subtitle = $section['content-area-subtitle'] !=''?'<h4 class="section-subtitle">'.$section['content-area-subtitle'].'</h4>':'';
+        </div>'):'';
+        $subtitle = $section['content-area-subtitle'] !=''?apply_filters('msdlab_sectioned_page_output_subtitle','<h4 class="section-subtitle">'.$section['content-area-subtitle'].'</h4>'):'';
         $header = apply_filters('the_content',$section['header-area-content']);
         $content = apply_filters('the_content',$section['content-area-content']);
         $footer = apply_filters('the_content',$section['footer-area-content']);
                 $float = $section['feature-image-float']!='none'?' class="align'.$section['feature-image-float'].'"':'';
         $featured_image = $section['content-area-image'] !=''?'<img src="'.$section['content-area-image'].'"'.$float.' />':'';
-        $classes = array(
+        $classes = apply_filters('msdlab_sectioned_page_output_classes',array(
             'section',
             'section-'.$slug,
             $section['css-classes'],
             'section-'.$eo,
             'clearfix',
-        );
+        ));
         //think about filtering the classes here
         $ret = '
         <div id="'.$slug.'" class="'.implode(' ', $classes).'"'.$background.'>
@@ -104,6 +104,21 @@ class MSDSectionedPage{
         //ts_data($section);
         global $parallax_ids;
         $eo = ($i+1)%2==0?'even':'odd';
+        $breakpoint = apply_filters('msdlab_column_breakpoint', 'sm');
+        switch($breakpoint){
+            case 'md':
+                $next = 'lg';
+                break;
+            case 'sm':
+                $next = 'md';
+                break;
+            case 'xs':
+                $next = 'sm';
+                break;
+            default:
+                $next = 'md';
+                break;
+        }
         $title = apply_filters('the_title',$section['content-area-title']);
         $section_name = $section['section-name']!=''?$section['section-name']:$title;
         $slug = sanitize_title_with_dashes(str_replace('/', '-', $section_name));
@@ -120,27 +135,27 @@ class MSDSectionedPage{
                 $parallax_ids[] = $slug;
             }
         }
-        $wrapped_title = trim($title) != ''?'<div class="section-title">
+        $wrapped_title = trim($title) != ''?apply_filters('msdlab_sectioned_page_output_title','<div class="section-title">
             <h3 class="wrap">
                 '.$title.'
             </h3>
-        </div>':'';
-        $subtitle = $section['content-area-subtitle'] !=''?'<h4 class="section-subtitle">'.$section['content-area-subtitle'].'</h4>':'';
-        $header = '<div class="section-header-area">'.apply_filters('the_content',$section['header-area-content']).'</div>';
-        $content = '<div class="section-content column-1 col-sm-12 col-md-'.$section['content-area-width'].'">'.apply_filters('the_content',$section['content-area-content']).'</div>';
-        $content2 = '<div class="section-content column-2 col-sm-12 col-md-'.$section['column-2-area-width'].'">'.apply_filters('the_content',$section['column-2-area-content']).'</div>';
-        $content3 = '<div class="section-content column-3 col-sm-12 col-md-'.$section['column-3-area-width'].'">'.apply_filters('the_content',$section['column-3-area-content']).'</div>';
-        $content4 = '<div class="section-content column-4 col-sm-12 col-md-'.$section['column-4-area-width'].'">'.apply_filters('the_content',$section['column-4-area-content']).'</div>';
-        $footer = '<div class="section-footer-area">'.apply_filters('the_content',$section['footer-area-content']).'</div>';
+        </div>'):'';
+        $subtitle = $section['content-area-subtitle'] !=''?apply_filters('msdlab_sectioned_page_output_subtitle','<h4 class="section-subtitle">'.$section['content-area-subtitle'].'</h4>'):'';
+        $header = $section['header-area-bool']?'<div class="section-header-area">'.apply_filters('the_content',$section['header-area-content']).'</div>':'';
+        $content = '<div class="section-content column-1 col-'.$breakpoint.'-12 col-'.$next.'-'.$section['content-area-width'].'">'.apply_filters('the_content',$section['content-area-content']).'</div>';
+        $content2 = '<div class="section-content column-2 col-'.$breakpoint.'-12 col-'.$next.'-'.$section['column-2-area-width'].'">'.apply_filters('the_content',$section['column-2-area-content']).'</div>';
+        $content3 = '<div class="section-content column-3 col-'.$breakpoint.'-12 col-'.$next.'-'.$section['column-3-area-width'].'">'.apply_filters('the_content',$section['column-3-area-content']).'</div>';
+        $content4 = '<div class="section-content column-4 col-'.$breakpoint.'-12 col-'.$next.'-'.$section['column-4-area-width'].'">'.apply_filters('the_content',$section['column-4-area-content']).'</div>';
+        $footer = $section['footer-area-bool']?'<div class="section-footer-area">'.apply_filters('the_content',$section['footer-area-content']).'</div>':'';
         $float = $section['feature-image-float']!='none'?' class="align'.$section['feature-image-float'].'"':'';
         $featured_image = $section['content-area-image'] !=''?'<img src="'.$section['content-area-image'].'"'.$float.' />':'';
-        $classes = array(
+        $classes = apply_filters('msdlab_sectioned_page_output_classes',array(
             'section',
             'section-'.$slug,
             $section['css-classes'],
             'section-'.$eo,
             'clearfix',
-        );
+        ));
         switch($section['layout']){
             case 'four-col':
                 $central_content = $content4;
