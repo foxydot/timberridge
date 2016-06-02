@@ -101,20 +101,14 @@ if (!class_exists('MSDCustomCPT')) {
         	register_activation_hook(__FILE__, array(&$this,'check_requirements'));
         	//get sub-packages
         	requireDir(plugin_dir_path(__FILE__).'/lib/inc');
-            //comment out any blocks not needed.
-            /*if(class_exists('MSDLocationCPT')){
-                $this->location_class = new MSDLocationCPT();
-                register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
-                register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
-            }*/
-            /*if(class_exists('MSDProjectCPT')){
-                $this->project_class = new MSDProjectCPT();
-                register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
-                register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
-            }*/
            
             if(class_exists('MSDNewsCPT')){
                 $this->news_class = new MSDNewsCPT();
+                register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
+                register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
+            }
+            if(class_exists('MSDPressCPT')){
+                $this->news_class = new MSDPressCPT();
                 register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
                 register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
             }

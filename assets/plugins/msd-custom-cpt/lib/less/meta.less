@@ -1,190 +1,133 @@
 @import 'elements';
 @import 'mixins';
 
-.location_meta_control,.team_meta_control,.meta_control,.my_meta_control
- {
-	.description{ display:none; }
-
-li:after {
-	content: ".";
-	display: block;
-	clear: both;
-	visibility: hidden;
-	line-height: 0;
-	height: 0;
-
-}
- 
-label
-{ display:block; font-weight:bold; margin-right: 1%;float: left; width: 14%; text-align: right;}
- 
-label span
-{ display:inline; font-weight:normal; }
- 
-span
-{ color:#999; display:block; }
- 
-.ginput_container {
-	width: 85%;
-	float: left;
-}
-textarea, input[type='text'], select
-{ display:inline;margin-bottom:3px; width:90%; }
-
-.mceIframeContainer {background:@white;}
-
-h4
-{ color:#999; font-size:1em; margin:15px 6px; text-transform:uppercase; }
-}
-
-#statelist {display: none;}
-
-.event_meta_control {
-  .description{ display:none; }
-
-li:after {
-  content: ".";
-  display: block;
-  clear: both;
-  visibility: hidden;
-  line-height: 0;
-  height: 0;
-
-}
- 
-label
-{ display:block; font-weight:bold; margin-right: 1%;float: left; width: 14%; text-align: right;}
- 
-label span
-{ display:inline; font-weight:normal; }
- 
-span
-{ color:#999; display:block; }
- 
-.ginput_container {
-  width: 85%;
-  float: left;
-}
-textarea, input[type='text'], select
-{ display:inline;margin-bottom:3px; width:90%; }
-input[type='text'].timepicker, select.timepicker
-{ display:inline-block;margin-bottom:3px; width:80px; }
-
-.mceIframeContainer {background:@white;}
-
-h4
-{ color:#999; font-size:1em; margin:15px 6px; text-transform:uppercase; }
-}
-
-.my_file_grid{
-  .table {
-    display: table;
-    .row {
-      display: table-row;padding-left: 1em;cursor: move;
-      .cell {display: table-cell;padding: 0 6px;}
-      .cell:first-child {padding-left: 20px;}
+.msdlab_meta_control{
+  h2{
+    padding: 0.5em;
+    border: 1px @ltgrey solid;
+    border-radius: 5px;
+  }
+  .table {display: block; width: 100%;}
+  .row{display: block;cursor: move;*zoom: 1;}
+  .row:before,
+  .row:after,
+  .row .cell:before,
+  .row .cell:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+  .row:after,
+  .row .cell:after {
+    clear: both;
+  }
+  .box{
+    margin: 20px 0;
+    padding: 20px 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .cell {
+    display: block; clear: both;margin-left: 1rem;
+    label{ display:block; font-weight:bold; margin-right: 1%;float: left; width: 20%; text-align: right;}
+    .input_container{width: 79%;float: left;
+      .file input[type="text"] {width: 70%}
+      input[type="color"]{height: 30px; width: 40px;}
+      textarea,
+      input[type='text'],
+      select,
+      .wp-editor-wrap{
+        display:inline;margin-bottom:3px; width: 90%;
+        &.small{
+          max-width: 80px;
+        }
+        &.hidden{
+          display: none;
+        }
+      }
       }
     }
-} 
-.manage-files{text-align: right;}
-.even {background: #eee;}
-.odd {background: #fff;}
-.file input[type="text"] {width: 75%}
-.thumb {width: 100px;
-  .thumbnail-preview {
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
+  .even {background: #eee;}
+  .odd {background: #fff;}
+  .cell label.cols-2 {display: none;}
+  .cols-2, .cols-3, .cols-4 {display: none;}
+  h2.section_handle{
+    padding-left: 2.2em;    margin: 2px 0 0;
   }
-}
-
-.ui-timepicker-wrapper {
-  overflow-y: auto;
-  height: 150px;
-  width: 6.5em;
-  background: #fff;
-  border: 1px solid #ddd;
-  -webkit-box-shadow:0 5px 10px rgba(0,0,0,0.2);
-  -moz-box-shadow:0 5px 10px rgba(0,0,0,0.2);
-  box-shadow:0 5px 10px rgba(0,0,0,0.2);
-  outline: none;
-  z-index: 10001;
-  margin: 0;
-}
-
-.ui-timepicker-wrapper.ui-timepicker-with-duration {
-  width: 11em;
-}
-
-.ui-timepicker-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.ui-timepicker-duration {
-  margin-left: 5px; color: #888;
-}
-
-.ui-timepicker-list:hover .ui-timepicker-duration {
-  color: #888;
-}
-
-.ui-timepicker-list li {
-  padding: 3px 0 3px 5px;
-  cursor: pointer;
+  .section_params{
+    max-height: 90vh;
+    overflow: auto;
+  }
+.ui-toggle-btn {
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 20px;
+  margin: 0 0 1rem 0;
+  background: #555; 
+  overflow: hidden;
   white-space: nowrap;
-  color: #000;
-  list-style: none;
-  margin: 0;
+  border-radius: 5px;
+  box-shadow: 1px 1px 8px rgba(0,0,0,0.4) inset, 1px 1px 0 rgba(255,255,255,0.15);
+
+
+input {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+  background-color: red;
+  border: solid 1px;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
 }
 
-.ui-timepicker-list:hover .ui-timepicker-selected {
-  background: #fff; color: #000;
+.handle {
+  position: relative;
+  z-index: 99;
+  width: 20%;
+  height: 100%;
+   background: #BBB;
+  border-radius: 5px;
+  color: #DDD;
+  -webkit-transition: all 240ms;
+  -moz-transition: all 240ms;
+  box-shadow: 1px 1px 0 rgba(255,255,255,0.3) inset;
+  -webkit-transform: translate3d(0,0,1px);
+  -moz-transform: translate3d(0,0,1px);
 }
 
-li.ui-timepicker-selected,
-.ui-timepicker-list li:hover,
-.ui-timepicker-list .ui-timepicker-selected:hover {
-  background: #1980EC; color: #fff;
+input:checked + .handle {
+  -webkit-transform: translateX(400%);
+  -moz-transform: translateX(400%);
 }
 
-li.ui-timepicker-selected .ui-timepicker-duration,
-.ui-timepicker-list li:hover .ui-timepicker-duration {
-  color: #ccc;
+.handle:before,
+.handle:after {
+  position: absolute;
+  top: 0;
+  width: 400%;
+  height: 100%;
+  line-height: 20px;
+  font-size: 0.8em;
+  text-align: center;
 }
 
-.ui-timepicker-list li.ui-timepicker-disabled,
-.ui-timepicker-list li.ui-timepicker-disabled:hover,
-.ui-timepicker-list li.ui-timepicker-selected.ui-timepicker-disabled {
-  color: #888;
-  cursor: default;
+.handle:before {
+  content: attr(data-on);
+  right: 100%;
 }
 
-.ui-timepicker-list li.ui-timepicker-disabled:hover,
-.ui-timepicker-list li.ui-timepicker-selected.ui-timepicker-disabled {
-  background: #f2f2f2;
+.handle:after {
+  content: attr(data-off);
+  left: 100%;
 }
-
- .custom-combobox {
-position: relative;
-display: inline-block;
 }
- .custom-combobox-toggle {
-position: absolute;
-top: 0;
-bottom: 0;
-margin-left: -1px;
-padding: 0;
-/* support: IE7 */
-*height: 1.7em;
-*top: 0.1em;
+.switchable{
+  -webkit-transition: height .5s ease-in-out;
+  -moz-transition: height .5s ease-in-out;
+  -ms-transition: height .5s ease-in-out;
+  -o-transition: height .5s ease-in-out;
+  transition: height .5s ease-in-out;
 }
-.custom-combobox-input {
-margin: 0;
-padding: 0.3em;
-}
-
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{background: @white;}
+} 

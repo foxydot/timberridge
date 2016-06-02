@@ -6,6 +6,8 @@
 
 class MSDNewsCPT {
 
+    //Properties
+    var $cpt = 'msd_news';
 	/**
     * PHP 4 Compatible Constructor
     */
@@ -21,7 +23,10 @@ class MSDNewsCPT {
         $this->plugin_path = plugin_dir_path('msd-custom-cpt/msd-custom-cpt.php');
         
         //Actions
+        add_action( 'init', array(&$this,'add_metaboxes') );
         add_action( 'init', array(&$this,'register_cpt_news') );
+        add_action('admin_enqueue_scripts', array(&$this,'add_admin_styles') );
+        
         
         //Filters
         
@@ -29,6 +34,22 @@ class MSDNewsCPT {
         add_shortcode( 'news-items', array(&$this,'list_news_stories') );
     }
         
+        
+    function add_metaboxes(){
+        global $news_info,$wpalchemy_media_access;
+        $news_info = new WPAlchemy_MetaBox(array
+        (
+            'id' => '_news_info',
+            'title' => 'News Info',
+            'types' => array($this->cpt),
+            'context' => 'normal',
+            'priority' => 'high',
+            'template' => WP_PLUGIN_DIR.'/'.plugin_dir_path('msd-custom-cpt/msd-custom-cpt.php').'lib/template/news-info.php',
+            'autosave' => TRUE,
+            'mode' => WPALCHEMY_MODE_EXTRACT, // defaults to WPALCHEMY_MODE_ARRAY
+            'prefix' => '_news_' // defaults to NULL
+        ));
+    }
 	
 	function register_cpt_news() {
 	
@@ -51,8 +72,7 @@ class MSDNewsCPT {
 	        'labels' => $labels,
 	        'hierarchical' => false,
 	        'description' => 'Customer News Items',
-	        'supports' => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail'),
-	        'taxonomies' => array( 'genre' ),
+	        'supports' => array( 'title', 'author', ),
 	        'public' => true,
 	        'show_ui' => true,
 	        'show_in_menu' => true,
@@ -61,7 +81,7 @@ class MSDNewsCPT {
 	        'show_in_nav_menus' => true,
 	        'publicly_queryable' => true,
 	        'exclude_from_search' => false,
-	        'has_archive' => false,
+	        'has_archive' => true,
 	        'query_var' => true,
 	        'can_export' => true,
 	        'rewrite' => array('slug'=>'news','with_front'=>false),
@@ -79,23 +99,27 @@ class MSDNewsCPT {
             ),
 	    );
 	
-	    register_post_type( 'msd_news', $args );
+	    register_post_type( $this->cpt, $args );
 	    flush_rewrite_rules();
 	}
 		
 	function list_news_stories( $atts ) {
+	    global $news_info;
 		extract( shortcode_atts( array(
 		), $atts ) );
 		
-		$args = array( 'post_type' => 'msd_news', 'numberposts' => 0, );
+		$args = array( 'post_type' => $this->cpt, 'numberposts' => 0, );
 
 		$items = get_posts($args);
-	    foreach($items AS $item){ 
-	    	$excerpt = $item->post_excerpt?$item->post_excerpt:msd_trim_headline($item->post_content);
+	    foreach($items AS $item){
+	        $news_info->the_meta($item->ID);
+	        $title = $news_info->get_the_value('pdf-news-label')!=''?$news_info->get_the_value('pdf-news-label'):$item->post_title;
+            if($news_info->get_the_value('pdf-news')!=''){
+                $title = '<a class="pdf" href="'.$news_info->get_the_value('pdf-news').'">'.$title.'</a>';
+            }
 	     	$publication_list .= '
 	     	<li>
-	     		<h4><strong>'.$item->post_title.'</strong></h4>
-				<div class="news-entry">'.$item->post_content.'</div>
+	     		<h4><strong>'.$title.'</strong> '.get_the_date('', $item->ID).'</h4>
 			</li>';
 	
 	     }
@@ -103,22 +127,14 @@ class MSDNewsCPT {
 		return '<ul class="publication-list news-items">'.$publication_list.'</ul><div class="clear"></div>';
 	}	
 
-        function get_news_items_for_team_member($team_id){
-            global $news;
-            $args = array( 
-                'post_type' => 'msd_news', 
-                'numberposts' => -1,
-                'order' => 'ASC',
-                'orderby' => 'menu_order',
-                'meta_query' => array(
-                   array(
-                       'key' => '_news_team_members',
-                       'value' => '"'.$team_id.'"',
-                       'compare' => 'LIKE',
-                   )
-               )
-            );
-            $the_news = get_posts($args);
-            return($the_news);
-        }
+
+        function add_admin_styles() {
+            global $current_screen;
+            if($current_screen->post_type == $this->cpt){
+                wp_enqueue_style('thickbox');
+                wp_enqueue_style('custom_meta_css',plugin_dir_url(dirname(__FILE__)).'/css/meta.css');
+                wp_enqueue_style('jqueryui_smoothness','//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css');
+            }
+        }  
+
 }
