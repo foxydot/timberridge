@@ -113,11 +113,41 @@ img#wpstats {
   }
 }
 .entry-content{
-ul.news-items{
+ul.news-items,ul.press-items{
   list-style: none outside none;
   margin-left: 0;
   li{
     list-style: none outside none;
   }
 }
+ul.news-items div.page{
+  display: none;
+  &.active{
+    display: block;
+  }
+}
+ul.publication-list-pagination{
+  list-style: none outside none;
+  margin-left: 0;
+  text-align: center;
+  li{
+    list-style: none outside none;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 1em;
+  }
+}
+}
+
+.job-manager-application-wrapper .application,.single_job_listing .application{
+  .application_button{
+    .button();
+    display: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: inherit;
+    outline: inherit;
+    padding: inherit;
+    text-align: inherit;
+  }
 }

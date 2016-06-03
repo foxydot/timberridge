@@ -6971,12 +6971,62 @@ img#wpstats {
 .gfield table.gsurvey-likert tbody tr td.gsurvey-likert-choice-label {
   background: none;
 }
-.entry-content ul.news-items {
+.entry-content ul.news-items,
+.entry-content ul.press-items {
   list-style: none outside none;
   margin-left: 0;
 }
-.entry-content ul.news-items li {
+.entry-content ul.news-items li,
+.entry-content ul.press-items li {
   list-style: none outside none;
+}
+.entry-content ul.news-items div.page {
+  display: none;
+}
+.entry-content ul.news-items div.page.active {
+  display: block;
+}
+.entry-content ul.publication-list-pagination {
+  list-style: none outside none;
+  margin-left: 0;
+  text-align: center;
+}
+.entry-content ul.publication-list-pagination li {
+  list-style: none outside none;
+  display: inline-block;
+  cursor: pointer;
+  padding: 0 1em;
+}
+.job-manager-application-wrapper .application .application_button,
+.single_job_listing .application .application_button {
+  padding: 6px 24px;
+  font-family: "Raleway", "Trebuchet MS", Calibri, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.625;
+  color: #2F5673;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: table;
+  margin: 12px auto;
+  text-decoration: none;
+  background-color: rgba(47, 86, 115, 0);
+  border: 2px solid #2F5673;
+  border-radius: 6px;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -ms-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  display: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: inherit;
+  outline: inherit;
+  padding: inherit;
+  text-align: inherit;
 }
 /*
 Site Header

@@ -105,6 +105,10 @@ if (!class_exists('MSDCustomRoles')) {
             $capabilities = array(
                 'read' => true,
                 'upload_files' => true,
+                'gravityforms_view_entries' => true,
+                'gravityforms_view_entry_notes' => true,
+                'gravityforms_edit_entry_notes' => true,
+                'gravityforms_export_entries' => true,
             );
             remove_role('marketing');
             add_role( 'marketing', 'Marketing', $capabilities );

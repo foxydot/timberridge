@@ -105,13 +105,20 @@ class MSDNewsCPT {
 		
 	function list_news_stories( $atts ) {
 	    global $news_info;
+        add_action('print_footer_scripts',array(&$this,'print_footer_scripts'));
 		extract( shortcode_atts( array(
 		), $atts ) );
 		
-		$args = array( 'post_type' => $this->cpt, 'numberposts' => 0, );
+		$args = array( 'post_type' => $this->cpt, 'numberposts' => -1, );
 
 		$items = get_posts($args);
+        $i = 0;$p = 1;
+        $perpage = 10;
 	    foreach($items AS $item){
+	        if($i%$perpage == 0){
+	            $active = $p==1?' active':'';
+                $publication_list .= '<div class="page page-'.$p.$active.'">';
+	        }
 	        $news_info->the_meta($item->ID);
 	        $title = $news_info->get_the_value('pdf-news-label')!=''?$news_info->get_the_value('pdf-news-label'):$item->post_title;
             if($news_info->get_the_value('pdf-news')!=''){
@@ -121,12 +128,36 @@ class MSDNewsCPT {
 	     	<li>
 	     		<h4><strong>'.$title.'</strong> '.get_the_date('', $item->ID).'</h4>
 			</li>';
-	
+            if($i%$perpage == $perpage-1){
+                $paging .= '<li data-page="'.$p.'">'.$p.'</li>';
+                $publication_list .= '</div>';
+                $p++;
+            }
+	       $i++;
 	     }
+        if($i%$perpage != $perpage-1){
+            $publication_list .= '</div>';
+            $paging .= '<li data-page="'.$p.'">'.$p.'</li>';
+        }
 		
-		return '<ul class="publication-list news-items">'.$publication_list.'</ul><div class="clear"></div>';
+		return '<ul class="publication-list news-items">'.$publication_list.'</ul>
+		<ul class="publication-list-pagination">'.$paging.'</ul>
+		<div class="clear"></div>';
 	}	
 
+        function print_footer_scripts(){
+            print '
+            <script type="text/javascript">
+                jQuery(document).ready(function($) {
+                    $(".publication-list-pagination li").click(function(){
+                        var page = $(this).attr("data-page");
+                        $(".page").removeClass("active");
+                        $(".page-"+page).addClass("active");
+                    });
+                });
+            </script>
+            ';
+        }
 
         function add_admin_styles() {
             global $current_screen;
