@@ -109,6 +109,7 @@ if (!class_exists('MSDCustomRoles')) {
                 'gravityforms_view_entry_notes' => true,
                 'gravityforms_edit_entry_notes' => true,
                 'gravityforms_export_entries' => true,
+                'admin_msd_settings' => true,
             );
             remove_role('marketing');
             add_role( 'marketing', 'Marketing', $capabilities );
@@ -203,6 +204,7 @@ if (!class_exists('MSDCustomRoles')) {
             return $mime_types;
         }
         
+        /* Not using this don't need?
         function restrict_pages(){
             if(is_page()){
                 if(current_user_can('marketing') || current_user_can('human_resources')){
@@ -224,6 +226,7 @@ if (!class_exists('MSDCustomRoles')) {
                 //do something.
             }
         }
+         */
 
         function events_capabilites($role,$events = false,$venue = false,$organizers = false){
             if(class_exists('Tribe__Events__Main')){
