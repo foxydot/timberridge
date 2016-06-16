@@ -84,6 +84,13 @@ $social_media_inputs = array();
         <input name="contact_link" type="text" id="contact_link" value="' . get_option('msdsocial_contact_link') . '" class="regular-text" />
       </div>
   </li>';
+  $blog_checked = get_option('msdsocial_show_blog')==true?'CHECKED':'';
+  $social_media_inputs['blog'] = '<li>
+      <label for="show_blog">Show Blog Link? <i class="fa fa-newspaper-o"></i></label>
+      <div class="input">
+        <input name="show_blog" type="checkbox" id="show_blog" value="true" ' . $blog_checked . '> yes
+      </div>
+  </li>';
   $rss_checked = get_option('msdsocial_show_feed')==true?'CHECKED':'';
   $social_media_inputs['rssfeed'] = '<li>
       <label for="show_feed">Show Feed? <i class="fa fa-rss"></i></label>

@@ -2,7 +2,7 @@
 /*
 Plugin Name: MSD Site Settings
 Description: Provides settings panel for several social/address options and widgets/shortcodes/functions for display.
-Version: 0.9.4
+Version: 0.9.5
 Author: Catherine M OBrien Sandrick (CMOS)
 Author URI: http://msdlab.com/biological-assets/catherine-obrien-sandrick/
 GitHub Plugin URI: https://github.com/msdlab/msd_site_settings
@@ -23,11 +23,13 @@ class MSDSocial{
 	private $the_path;
 	private $the_url;
 	public $icon_size;
+    private $ver;
 	function MSDSocial(){$this->__construct();}
     function __construct(){
 		$this->the_path = plugin_dir_path(__FILE__);
 		$this->the_url = plugin_dir_url(__FILE__);
 		$this->icon_size = get_option('msdsocial_icon_size')?get_option('msdsocial_icon_size'):'0';
+        $this->ver = '0.9.5';
 		/*
 		 * Pull in some stuff from other files
 		 */
@@ -37,7 +39,7 @@ class MSDSocial{
         if(!is_admin()){
     		wp_enqueue_style('msd-social-style',$this->the_url.'lib/css/style.css');
     		wp_enqueue_style('msd-social-style-'.$this->icon_size,$this->the_url.'lib/css/style'.$this->icon_size.'.css');
-            wp_enqueue_style('font-awesome-style','//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+            wp_enqueue_style('font-awesome-style','//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css');
         }
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_scripts') );
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_styles') );
@@ -56,10 +58,10 @@ class MSDSocial{
         function add_admin_scripts() {
             global $current_screen;
             if($current_screen->id == 'settings_page_msdsocial-options'){
-                wp_enqueue_script('bootstrap-jquery','//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',array('jquery'));
-                wp_enqueue_script('timepicker-jquery',$this->the_url.'lib/js/jquery.timepicker.min.js',array('jquery'));
+                wp_enqueue_script('bootstrap-jquery','//maxcdn.bootstrapcdn.com/bootstrap/latest/js/bootstrap.min.js',array('jquery'),$this->ver,TRUE);
+                wp_enqueue_script('timepicker-jquery',$this->the_url.'lib/js/jquery.timepicker.min.js',array('jquery'),$this->ver,FALSE);
                 wp_enqueue_script( 'jquery-ui-datepicker' );
-                wp_enqueue_script('msdsocial-jquery',$this->the_url.'lib/js/plugin-jquery.js',array('jquery'));
+                wp_enqueue_script('msdsocial-jquery',$this->the_url.'lib/js/plugin-jquery.js',array('jquery','timepicker-jquery'),$this->ver,TRUE);
                 
             }
         }
@@ -67,8 +69,8 @@ class MSDSocial{
         function add_admin_styles() {
             global $current_screen;
             if($current_screen->id == 'settings_page_msdsocial-options'){
-                wp_register_style('bootstrap-style','//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css');
-                wp_register_style('font-awesome-style','//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css',array('bootstrap-style'));
+                wp_register_style('bootstrap-style','//maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css');
+                wp_register_style('font-awesome-style','//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',array('bootstrap-style'));
                 wp_register_style('timepicker-style',$this->the_url.'lib/css/jquery.timepicker.css');
                 wp_enqueue_style('font-awesome-style');
                 wp_enqueue_style('timepicker-style');
@@ -350,6 +352,15 @@ function social_media($atts = array()){
     if(get_option('msdsocial_contact_link')!=""){
         $ret .= '<a href="'.get_option('msdsocial_contact_link').'" class="fa fa-envelope" title="Contact Us" target="_blank"></a>';
     }    
+    if(get_option('msdsocial_show_blog')!=""){
+        if (get_option('show_on_front')=='page') {
+          $blog_page_id = get_option('page_for_posts');
+          $blog_url = get_permalink($blog_page_id);
+        } else {
+          $blog_url = get_option('home');
+        }
+        $ret .= '<a href="'.$blog_url.'" class="fa fa-newspaper-o" title="Blog" target="_blank"></a>';
+    }
     if(get_option('msdsocial_show_feed')!=""){
         $ret .= '<a href="'.get_bloginfo('rss2_url').'" class="fa fa-rss" title="RSS Feed" target="_blank"></a>';
     }
@@ -458,10 +469,6 @@ function setup_notification_bar(){
                 }
                 break;
             case 50:
-                global $notification_bar_html;
-                $notification_bar_html = $this->get_notification_bar();
-                return true;
-                break;
             default:
                 return false;
                 break;
@@ -470,11 +477,8 @@ function setup_notification_bar(){
 }
 
 function print_notification_bar(){
-    print $this->get_notification_bar();
-}
-function get_notification_bar(){
     $content = apply_filters('the_content',get_option('msdsocial_notification_content'));
-    return '<div class="notification-bar"><div class="wrap">' . $content . '</div></div>';
+    print '<div class="notification-bar"><div class="wrap">' . $content . '</div></div>';
 }
 
 function requireDir($dir){
