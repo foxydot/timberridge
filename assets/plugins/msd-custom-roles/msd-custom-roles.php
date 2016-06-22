@@ -116,9 +116,11 @@ if (!class_exists('MSDCustomRoles')) {
             $this->events_capabilites('marketing',1,1,1);
             $this->news_capabilites('marketing');
             $this->press_capabilites('marketing');
+            $this->activity_capabilites('marketing');
             
             $this->news_capabilites('administrator');
             $this->press_capabilites('administrator');
+            $this->activity_capabilites('administrator');
             
             remove_role('human_resources');
             add_role( 'human_resources', 'Human Resources', $capabilities );
@@ -366,6 +368,30 @@ if (!class_exists('MSDCustomRoles')) {
                 'read_private_press',
                 );
                 foreach($press_caps AS $pc){
+                    $role->add_cap($pc);
+                }
+            }
+        }
+        
+        function activity_capabilites($role){
+            if(class_exists('MSDActivityCPT')){
+                $role = get_role($role);
+                $activity_caps = array(
+                'edit_activity',
+                'read_activity',
+                'delete_activity',
+                'delete_activity',
+                'edit_activity',
+                'edit_others_activity',
+                'delete_others_activity',
+                'publish_activity',
+                'edit_published_activity',
+                'delete_published_activity',
+                'delete_private_activity',
+                'edit_private_activity',
+                'read_private_activity',
+                );
+                foreach($activity_caps AS $pc){
                     $role->add_cap($pc);
                 }
             }

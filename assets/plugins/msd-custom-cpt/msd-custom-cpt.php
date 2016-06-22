@@ -112,6 +112,11 @@ if (!class_exists('MSDCustomCPT')) {
                 register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
                 register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
             }
+            if(class_exists('MSDActivityCPT')){
+                $this->activity_class = new MSDActivityCPT();
+                register_activation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
+                register_deactivation_hook( __FILE__, create_function('','flush_rewrite_rules();') );
+            }
         }
 
         /**
