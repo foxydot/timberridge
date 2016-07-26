@@ -112,6 +112,7 @@ class MSDNewsCPT {
 		$args = array( 'post_type' => $this->cpt, 'numberposts' => -1, );
 
 		$items = get_posts($args);
+        if(count($items)>0){
         $i = 0;$p = 1;
         $perpage = 10;
 	    foreach($items AS $item){
@@ -143,6 +144,7 @@ class MSDNewsCPT {
 		return '<ul class="publication-list news-items">'.$publication_list.'</ul>
 		<ul class="publication-list-pagination">'.$paging.'</ul>
 		<div class="clear"></div>';
+		}
 	}	
 
         function print_footer_scripts(){
