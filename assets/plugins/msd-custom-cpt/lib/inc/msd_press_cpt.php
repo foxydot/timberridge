@@ -26,8 +26,12 @@ class MSDPressCPT {
         add_action( 'init', array(&$this,'add_metaboxes') );
         add_action( 'init', array(&$this,'register_cpt_press') );
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_styles') );
+        add_action( 'admin_enqueue_scripts', array(&$this,'load_wp_media_files') );
         
         //Filters
+				if ( is_admin() ) {
+					add_filter('attachment_fields_to_edit', array( $this, 'force_attachment_file_url' ), 10, 2);
+				}
         
         //Shortcodes
         add_shortcode( 'press-kit', array(&$this,'list_press_stories') );
@@ -136,4 +140,18 @@ class MSDPressCPT {
             }
         }  
 
+	function load_wp_media_files() {
+		wp_enqueue_media();
+		wp_enqueue_script('media-upload');
+	}
+	
+	function force_attachment_file_url($form_fields, $post) {
+		$post_type = get_post($post->post_parent)->post_type;
+		if($post_type=='msd_press') {
+			// force the Link URL to use the file URL
+			$form_fields['url']['html'] = image_link_input_fields($post, 'file');
+		}
+		return $form_fields;
+	}
+	
 }

@@ -26,10 +26,13 @@ class MSDNewsCPT {
         add_action( 'init', array(&$this,'add_metaboxes') );
         add_action( 'init', array(&$this,'register_cpt_news') );
         add_action('admin_enqueue_scripts', array(&$this,'add_admin_styles') );
-        
+        add_action( 'admin_enqueue_scripts', array(&$this,'load_wp_media_files') );
         
         //Filters
-        
+				if ( is_admin() ) {
+					add_filter('attachment_fields_to_edit', array( $this, 'force_attachment_file_url' ), 10, 2);
+				}
+				
         //Shortcodes
         add_shortcode( 'news-items', array(&$this,'list_news_stories') );
     }
@@ -169,5 +172,19 @@ class MSDNewsCPT {
                 wp_enqueue_style('jqueryui_smoothness','//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css');
             }
         }  
+				
+	function load_wp_media_files() {
+		wp_enqueue_media();
+		wp_enqueue_script('media-upload');
+	}
+	
+	function force_attachment_file_url($form_fields, $post) {
+		$post_type = get_post($post->post_parent)->post_type;
+		if($post_type=='msd_news') {
+			// force the Link URL to use the file URL
+			$form_fields['url']['html'] = image_link_input_fields($post, 'file');
+		}
+		return $form_fields;
+	}
 
 }
