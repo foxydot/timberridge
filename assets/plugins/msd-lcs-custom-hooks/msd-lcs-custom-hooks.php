@@ -53,7 +53,7 @@ Author URI: http://msdlab.com
                             ) );
                 foreach($events AS $event){
                     $ret .= '
-                    [su_spoiler title="<strong>'.$event->post_title.'</strong> '.date("M d, Y H:ia",strtotime($event->EventStartDate)).'"]
+                    [su_spoiler title="<strong>'.$event->post_title.'</strong> '.date("M d, Y a:ia",strtotime($event->EventStartDate)).'"]
                     '.$event->post_content.'[/su_spoiler]';
                 }            
                 $ret = '[su_accordion]'.$ret.'[/su_accordion]';
